@@ -1,0 +1,179 @@
+@model WularItech_solutions.Models.Product
+
+@{
+    ViewData["Title"] = "Create Product";
+}
+
+<link rel="stylesheet" href="~/css/site.css" /> <!-- Assuming main theme CSS -->
+
+<div class="create-product-container">
+    <h2>Create Product</h2>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert-message">
+            @ViewBag.Message
+        </div>
+    }
+
+    <form asp-action="CreateProduct" method="post" enctype="multipart/form-data" class="product-form">
+        <div class="form-group">
+            <label asp-for="ProductName">Product Name</label>
+            <input asp-for="ProductName" class="form-control" placeholder="Enter product name" />
+            <span asp-validation-for="ProductName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ProductDescription">Product Description</label>
+            <textarea asp-for="ProductDescription" class="form-control" placeholder="Enter product description"></textarea>
+            <span asp-validation-for="ProductDescription" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ProductImage">Product Image</label>
+            <input asp-for="ProductImage" type="file" name="image" class="form-control" />
+            <span asp-validation-for="ProductImage" class="text-danger"></span>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label asp-for="ProductPrice">Product Price</label>
+                <input asp-for="ProductPrice" class="form-control" step="0.01" placeholder="0.00" />
+                <span asp-validation-for="ProductPrice" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ProductStock">Product Stock</label>
+                <input asp-for="ProductStock" class="form-control" placeholder="Quantity" />
+                <span asp-validation-for="ProductStock" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Create Product</button>
+            <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
+
+<style>
+/* Modern UI Create Product Page */
+
+.create-product-container {
+    max-width: 800px;
+    margin: 80px auto; /* space top & bottom */
+    padding: 40px 30px; /* inner spacing */
+    background-color: var(--bg-white); /* app theme background */
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    font-family: var(--font-sans);
+}
+
+.create-product-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 28px;
+}
+
+.alert-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 12px 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.product-form .form-group {
+    margin-bottom: 20px;
+}
+
+.product-form .form-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.product-form .form-row .form-group {
+    flex: 1; /* evenly space inputs */
+}
+
+.product-form label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+    color: var(--text-dark);
+}
+
+.product-form input,
+.product-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color var(--transition-fast);
+}
+
+.product-form input:focus,
+.product-form textarea:focus {
+    border-color: var(--primary-orange);
+    outline: none;
+}
+
+.product-form textarea {
+    min-height: 100px;
+}
+
+.form-actions {
+    margin-top: 25px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.btn {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+.btn-primary {
+    background-color: var(--primary-orange);
+    color: #fff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-orange-hover);
+}
+
+.btn-secondary {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+}
+
+.text-danger {
+    font-size: 13px;
+}
+
+/* Responsive */
+media (max-width: 600px) {
+    .create-product-container {
+        margin: 30px 15px;
+        padding: 30px 20px;
+    }
+
+    .product-form .form-row {
+        flex-direction: column;
+    }
+}
+</style>

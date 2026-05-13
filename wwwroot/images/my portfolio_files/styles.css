@@ -1,0 +1,459 @@
+/* =========================
+   1. RESET
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+   2. GLOBAL STYLES
+========================= */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0b0f19, #111827);
+    color: #e6edf3;
+    line-height: 1.6;
+    padding: 40px 0;
+}
+
+/* =========================
+   3. LAYOUT
+========================= */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* =========================
+   4. HERO (TOP SECTION)
+========================= */
+.profile {
+    display: block;
+    margin: 20px auto;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #3b82f6;
+    transition: 0.3s;
+}
+
+.profile:hover {
+    transform: scale(1.05);
+}
+
+/* Headings */
+h1 {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+p {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* =========================
+   5. GLASS SECTIONS
+========================= */
+section {
+    margin-top: 25px;
+    padding: 25px;
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+    transition: all 0.3s ease;
+}
+
+/* Hover animation */
+section:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* =========================
+   EDUCATION SECTION
+========================= */
+.education-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.04);
+    transition: 0.3s;
+}
+
+.education-item:hover {
+    background: rgba(59, 130, 246, 0.1);
+    transform: translateX(5px);
+}
+
+/* Degree */
+.education-item h3 {
+    color: #38bdf8;
+    margin-bottom: 5px;
+}
+
+/* Institution */
+.institution {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+/* Duration */
+.duration {
+    font-size: 13px;
+    color: #64748b;
+}
+
+/* =========================
+   EXPERIENCE SECTION
+========================= */
+.experience-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.04);
+    transition: 0.3s;
+}
+
+.experience-item:hover {
+    background: rgba(59, 130, 246, 0.1);
+    transform: translateX(5px);
+}
+
+/* Role title */
+.experience-item h3 {
+    color: #38bdf8;
+    margin-bottom: 5px;
+}
+
+/* Company */
+.company {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+/* Duration */
+.duration {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 10px;
+}
+
+/* Bullet points */
+.experience-item ul {
+    margin-top: 10px;
+}
+
+/* =========================
+   RESEARCH & PUBLICATIONS
+========================= */
+.research-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.04);
+    transition: 0.3s;
+}
+
+.research-item:hover {
+    background: rgba(59, 130, 246, 0.1);
+    transform: translateX(5px);
+}
+
+/* Title */
+.research-item h3 {
+    color: #38bdf8;
+    margin-bottom: 5px;
+}
+
+/* Institution */
+.research-item .institution {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+/* Duration */
+.research-item .duration {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 10px;
+}
+
+/* =========================
+   AWARDS & WORKSHOPS
+========================= */
+.award-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.04);
+    transition: 0.3s;
+}
+
+.award-item:hover {
+    background: rgba(59, 130, 246, 0.1);
+    transform: translateX(5px);
+}
+
+/* Title */
+.award-item h3 {
+    color: #38bdf8;
+    margin-bottom: 5px;
+}
+
+/* Institution */
+.award-item .institution {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+/* Duration */
+.award-item .duration {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 10px;
+}
+
+/* Certificate Image */
+.award-img {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: 0.3s;
+}
+
+.award-img:hover {
+    transform: scale(1.02);
+}
+
+/* =========================
+
+/* =========================
+   TESTIMONIAL GRID
+========================= */
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* =========================
+   TESTIMONIAL CARD
+========================= */
+.testimonial-card {
+    padding: 20px;
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    transition: 0.3s;
+    position: relative;
+}
+
+/* Hover effect */
+.testimonial-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    background: rgba(59, 130, 246, 0.1);
+}
+
+/* Quote text */
+.quote {
+    font-style: italic;
+    color: #cbd5f5;
+    margin-bottom: 15px;
+}
+
+/* Client name */
+.client {
+    font-size: 14px;
+    color: #94a3b8;
+    text-align: right;
+}
+
+/* TESTIMONIAL GRID - 3 CARDS HORIZONTAL */
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 👈 force 3 columns */
+    gap: 20px;
+}
+/* Client name */
+.client {
+    font-size: 14px;
+    color: #94a3b8;
+    text-align: right;
+}
+/* =========================
+   6. HEADINGS STYLE
+========================= */
+h2 {
+    text-align: center;
+    color: #3b82f6;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+h2::after {
+    content: "";
+    width: 60px;
+    height: 2px;
+    background: #3b82f6;
+    display: block;
+    margin: 8px auto 0;
+}
+
+/* =========================
+   7. LISTS
+========================= */
+ul {
+    list-style: none;
+}
+
+ul li {
+    background: rgba(255, 255, 255, 0.05);
+    margin: 6px 0;
+    padding: 10px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+ul li:hover {
+    background: rgba(59, 130, 246, 0.2);
+    transform: translateX(5px);
+}
+
+/* =========================
+   8. LINKS
+========================= */
+a {
+    color: #38bdf8;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   9. FORM
+========================= */
+form {
+    margin-top: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: none;
+    background: #1f2937;
+    color: white;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    background: #38bdf8;
+    color: black;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #0ea5e9;
+    transform: scale(1.02);
+}
+
+/* =========================
+   10. SOCIAL ICONS
+========================= */
+.social-icons {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 10px;
+    font-size: 24px;
+    color: #38bdf8;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: white;
+    transform: scale(1.2);
+}
+
+/* =========================
+   11. FLOATING SIDEBAR
+========================= */
+.floating-icons {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+}
+
+.floating-icons a {
+    width: 45px;
+    height: 45px;
+    background: #1f2937;
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 18px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.floating-icons a:hover {
+    transform: scale(1.2);
+}
+
+/* Brand hover colors */
+.floating-icons a:nth-child(1):hover {
+    background: #0077b5;
+    color: white;
+}
+
+.floating-icons a:nth-child(2):hover {
+    background: #ea4335;
+    color: white;
+}
+
+.floating-icons a:nth-child(3):hover {
+    background: #25D366;
+    color: white;
+}

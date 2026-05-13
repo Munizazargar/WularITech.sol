@@ -1,0 +1,141 @@
+@{
+    ViewData["Title"] = "Our Services";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Services.css" />
+}
+
+<section id="services" class="services-section">
+
+
+    <!-- Premium Header -->
+    <div class="services-header reveal text-center">
+        <span class="section-tag">OUR SERVICES</span>
+        <h2 class="services-title">What We Offer</h2>
+        <p class="services-subtitle">
+            Reliable surveillance and intelligent technology solutions 
+            engineered to protect, connect, and support modern homes, 
+            schools, and business environments.
+        </p>
+    </div>
+
+    <div class="services-grid">
+
+        <!-- Service Card -->
+        <div class="service-card reveal">
+            <div class="service-image">
+                <img src="~/images/cctv.jpg" alt="CCTV Surveillance Systems">
+            </div>
+            <div class="service-content">
+                <h5>CCTV Surveillance Systems</h5>
+                <p>Professional CCTV camera installation and monitoring solutions for homes and offices.</p>
+                <div class="service-buttons">
+                    <a href="https://wa.me/918825048116?text=Hey,+can+I+know+about+your+services+and+the+products+you+sell%3F"
+                       target="_blank" class="btn-whatsapp">WhatsApp</a>
+                    <a href="tel:+918825048116" class="btn-call">Call</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-card reveal">
+            <div class="service-image">
+                <img src="~/images/vdp.jpg" alt="Video Door Phones">
+            </div>
+            <div class="service-content">
+                <h5>Video Door Phones (VDP)</h5>
+                <p>Installation and configuration of video door phone systems for secure access.</p>
+                <div class="service-buttons">
+                    <a href="https://wa.me/918825048116?text=Hey,+can+I+know+about+your+services+and+the+products+you+sell%3F"
+                       target="_blank" class="btn-whatsapp">WhatsApp</a>
+                    <a href="tel:+918825048116" class="btn-call">Call</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-card reveal">
+            <div class="service-image">
+                <img src="~/images/smartpannels.jpg" alt="Smart Panels">
+            </div>
+            <div class="service-content">
+                <h5>Smart Panels & Digital Boards</h5>
+                <p>Setup of smart panels and digital boards for schools, offices, and commercial spaces.</p>
+                <div class="service-buttons">
+                    <a href="https://wa.me/918825048116?text=Hey,+can+I+know+about+your+services+and+the+products+you+sell%3F"
+                       target="_blank" class="btn-whatsapp">WhatsApp</a>
+                    <a href="tel:+918825048116" class="btn-call">Call</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-card reveal">
+            <div class="service-image">
+                <img src="~/images/bas.jpg" alt="Biometric Attendance Systems">
+            </div>
+            <div class="service-content">
+                <h5>Biometric Attendance Systems</h5>
+                <p>Installation and support of biometric attendance systems for offices and institutions.</p>
+                <div class="service-buttons">
+                    <a href="https://wa.me/918825048116?text=Hey,+can+I+know+about+your+services+and+the+products+you+sell%3F"
+                       target="_blank" class="btn-whatsapp">WhatsApp</a>
+                    <a href="tel:+918825048116" class="btn-call">Call</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-card reveal">
+            <div class="service-image">
+                <img src="~/images/school.jpg" alt="School Broadcast Systems">
+            </div>
+            <div class="service-content">
+                <h5>School Broadcast Systems</h5>
+                <p>Setup and maintenance of broadcast systems for schools and educational institutions.</p>
+                <div class="service-buttons">
+                    <a href="https://wa.me/918825048116?text=Hey,+can+I+know+about+your+services+and+the+products+you+sell%3F"
+                       target="_blank" class="btn-whatsapp">WhatsApp</a>
+                    <a href="tel:+918825048116" class="btn-call">Call</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-card reveal">
+            <div class="service-image">
+                <img src="~/images/thin.jpg" alt="Think Client Solutions">
+            </div>
+            <div class="service-content">
+                <h5>Think Client Solutions</h5>
+                <p>Custom electronic solutions tailored to your business needs and installations.</p>
+                <div class="service-buttons">
+                    <a href="https://wa.me/918825048116?text=Hey,+can+I+know+about+your+services+and+the+products+you+sell%3F"
+                       target="_blank" class="btn-whatsapp">WhatsApp</a>
+                    <a href="tel:+918825048116" class="btn-call">Call</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    function handleScroll() {
+        const windowHeight = window.innerHeight;
+
+        reveals.forEach(el => {
+            const elementTop = el.getBoundingClientRect().top;
+            const elementBottom = el.getBoundingClientRect().bottom;
+
+            if (elementTop < windowHeight - 100 && elementBottom > 100) {
+                el.classList.add("active");
+            } else {
+                el.classList.remove("active");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+});
+</script>

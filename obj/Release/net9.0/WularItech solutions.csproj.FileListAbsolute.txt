@@ -1,0 +1,238 @@
+D:\mvc\WularItech solutions\bin\Release\net9.0\appsettings.Development.json
+D:\mvc\WularItech solutions\bin\Release\net9.0\appsettings.json
+D:\mvc\WularItech solutions\bin\Release\net9.0\WularItech solutions.staticwebassets.runtime.json
+D:\mvc\WularItech solutions\bin\Release\net9.0\WularItech solutions.staticwebassets.endpoints.json
+D:\mvc\WularItech solutions\bin\Release\net9.0\WularItech solutions.exe
+D:\mvc\WularItech solutions\bin\Release\net9.0\WularItech solutions.deps.json
+D:\mvc\WularItech solutions\bin\Release\net9.0\WularItech solutions.runtimeconfig.json
+D:\mvc\WularItech solutions\bin\Release\net9.0\WularItech solutions.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\WularItech solutions.pdb
+D:\mvc\WularItech solutions\bin\Release\net9.0\Azure.Core.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Azure.Identity.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\BCrypt.Net-Next.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\CloudinaryDotNet.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\dotenv.net.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Humanizer.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.Build.Locator.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.CodeAnalysis.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.Data.SqlClient.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.EntityFrameworkCore.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.Extensions.Caching.Abstractions.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.Extensions.Caching.Memory.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.Extensions.DependencyInjection.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.Extensions.DependencyModel.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.Extensions.Logging.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.Extensions.Options.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.Extensions.Primitives.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.Identity.Client.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.IdentityModel.Abstractions.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.IdentityModel.Logging.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.IdentityModel.Protocols.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.IdentityModel.Tokens.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.SqlServer.Server.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Microsoft.Win32.SystemEvents.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Mono.TextTemplating.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\Newtonsoft.Json.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\System.ClientModel.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\System.CodeDom.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\System.Composition.AttributedModel.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\System.Composition.Convention.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\System.Composition.Hosting.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\System.Composition.Runtime.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\System.Composition.TypedParts.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\System.Configuration.ConfigurationManager.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\System.Drawing.Common.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\System.IdentityModel.Tokens.Jwt.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\System.Memory.Data.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\System.Runtime.Caching.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\System.Security.Cryptography.ProtectedData.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\System.Security.Permissions.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\System.Windows.Extensions.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\mvc\WularItech solutions\bin\Release\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\mvc\WularItech solutions\obj\Release\net9.0\WularItech solutions.csproj.AssemblyReference.cache
+D:\mvc\WularItech solutions\obj\Release\net9.0\rpswa.dswa.cache.json
+D:\mvc\WularItech solutions\obj\Release\net9.0\WularItech solutions.GeneratedMSBuildEditorConfig.editorconfig
+D:\mvc\WularItech solutions\obj\Release\net9.0\WularItech solutions.AssemblyInfoInputs.cache
+D:\mvc\WularItech solutions\obj\Release\net9.0\WularItech solutions.AssemblyInfo.cs
+D:\mvc\WularItech solutions\obj\Release\net9.0\WularItech solutions.csproj.CoreCompileInputs.cache
+D:\mvc\WularItech solutions\obj\Release\net9.0\WularItech solutions.MvcApplicationPartsAssemblyInfo.cache
+D:\mvc\WularItech solutions\obj\Release\net9.0\WularItech solutions.RazorAssemblyInfo.cache
+D:\mvc\WularItech solutions\obj\Release\net9.0\WularItech solutions.RazorAssemblyInfo.cs
+D:\mvc\WularItech solutions\obj\Release\net9.0\WularItech solutions.sourcelink.json
+D:\mvc\WularItech solutions\obj\Release\net9.0\rjimswa.dswa.cache.json
+D:\mvc\WularItech solutions\obj\Release\net9.0\rjsmrazor.dswa.cache.json
+D:\mvc\WularItech solutions\obj\Release\net9.0\rjsmcshtml.dswa.cache.json
+D:\mvc\WularItech solutions\obj\Release\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\mvc\WularItech solutions\obj\Release\net9.0\scopedcss\bundle\WularItech solutions.styles.css
+D:\mvc\WularItech solutions\obj\Release\net9.0\scopedcss\projectbundle\WularItech solutions.bundle.scp.css
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\w0aojypj68-61n19gt1b8.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\s56hzqvmm2-xtxxf3hu2r.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\h8y1jeen16-bqjiyaj88i.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\kal7uimr6n-c2jlpeoesf.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\hd22hgwe0p-erw9l3u2r3.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\owi9h0hyeg-aexeepp0ev.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\t67u2gjv6k-d7shbmvgxk.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\7qhlaa1vd0-ausgxo2sd3.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\eoj7tvnb4h-k8d9w2qqmf.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\m64q00cyb6-cosvhxvwiu.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\4jhbved9to-ub07r2b239.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\rx9ixk7tlw-fvhpjtyr6v.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\460geqncof-b7pk76d08c.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\3wq131bqz4-fsbi9cje9m.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\e7tpea41mk-rzd6atqjts.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\0ei0qfbthp-ee0r1s7dh0.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\2nehy7ac0p-dxx9fxp4il.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\9dg9xif38b-jd9uben2k1.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\2evn66h3ae-khv3u5hwcm.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\buahxds3zn-r4e9w2rdcm.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\p31kzchpjb-lcd1t2u6c8.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\nyh2q8vqst-c2oey78nd0.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\s6s606m64h-tdbxkamptv.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\70x5pisq10-j5mq2jizvt.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\bdqvwqtzd6-06098lyss8.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\vwcugrq4pf-nvvlpmu67g.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\4pxp3gne9g-s35ty4nyc5.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\tpj7yoa8v5-pj5nd1wqec.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\tdy4q0v8tq-46ein0sx1k.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\kc3vuljzvg-v0zj4ognzu.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\k4pg6g3m7s-37tfw0ft22.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\jo9yoots9q-hrwsygsryq.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\b260yw05d1-pk9g2wxc8p.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\28nmxa6i4u-ft3s53vfgj.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\4nqphx0uvi-6cfz1n2cew.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\bc8d90ecfd-6pdc2jztkx.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\hmsnrritw3-493y06b0oq.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\z9nb86ljzc-iovd86k7lj.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\hgpr51lvcj-vr1egmr9el.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\pxh16dqi02-kbrnm935zg.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\ch3zfzsd5j-jj8uyg4cgr.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\53o6kseut5-y7v9cxd14o.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\pbtjp4wfhq-notf2xhcfb.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\t08lq8kfh1-h1s4sie4z3.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\xks087scz7-63fj8s7r0e.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\stu4uqen1y-0j3bgjxly4.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\ceh8tm0kby-47otxtyo56.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\evzztm10sq-4v8eqarkd7.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\y69eepfub9-356vix0kms.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\9akmxuz997-83jwlth58m.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\r2o1972i3l-mrlpezrjn3.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\d817pmznkb-lzl9nlhx6b.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\31ep1bw678-ag7o75518u.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\hsgifj6ae5-x0q3zqp4vz.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\wlwqc42cqq-0i3buxo5is.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\jqu5fwdmob-o1o13a6vjx.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\egtb5m4ss2-ttgo8qnofa.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\a1xl6b57o9-2z0ns9nrw6.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\g5jh216k65-muycvpuwrr.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\acod0ammpd-87fc7y1x7t.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\n0guhjztuv-mlv21k5csn.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\ja4uozni2x-obpw5etub9.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\qlswmsrf6e-obpw5etub9.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\staticwebassets.build.json
+D:\mvc\WularItech solutions\obj\Release\net9.0\staticwebassets.build.json.cache
+D:\mvc\WularItech solutions\obj\Release\net9.0\staticwebassets.development.json
+D:\mvc\WularItech solutions\obj\Release\net9.0\staticwebassets.build.endpoints.json
+D:\mvc\WularItech solutions\obj\Release\net9.0\WularIte.7E665A26.Up2Date
+D:\mvc\WularItech solutions\obj\Release\net9.0\WularItech solutions.dll
+D:\mvc\WularItech solutions\obj\Release\net9.0\refint\WularItech solutions.dll
+D:\mvc\WularItech solutions\obj\Release\net9.0\WularItech solutions.pdb
+D:\mvc\WularItech solutions\obj\Release\net9.0\WularItech solutions.genruntimeconfig.cache
+D:\mvc\WularItech solutions\obj\Release\net9.0\ref\WularItech solutions.dll
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\b13evxnlv9-dnxctem9v6.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\zpyncu4ypn-9ngyhddl53.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\q8btjtq3zd-mxon02mmot.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\eyp33fgtfc-55dsl81uuv.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\ka12tohf4l-hzb44xme3d.gz
+D:\mvc\WularItech solutions\obj\Release\net9.0\compressed\9bodgefeff-yr3sk0payr.gz

@@ -1,0 +1,59 @@
+D:\mvc\WularItech solutions\publish\WularItech solutions.exe
+D:\mvc\WularItech solutions\publish\appsettings.Development.json
+D:\mvc\WularItech solutions\publish\appsettings.json
+D:\mvc\WularItech solutions\publish\WularItech solutions.dll
+D:\mvc\WularItech solutions\publish\WularItech solutions.runtimeconfig.json
+D:\mvc\WularItech solutions\publish\WularItech solutions.pdb
+D:\mvc\WularItech solutions\publish\Azure.Core.dll
+D:\mvc\WularItech solutions\publish\Azure.Identity.dll
+D:\mvc\WularItech solutions\publish\BCrypt.Net-Next.dll
+D:\mvc\WularItech solutions\publish\CloudinaryDotNet.dll
+D:\mvc\WularItech solutions\publish\dotenv.net.dll
+D:\mvc\WularItech solutions\publish\Microsoft.Bcl.AsyncInterfaces.dll
+D:\mvc\WularItech solutions\publish\Microsoft.Data.SqlClient.dll
+D:\mvc\WularItech solutions\publish\Microsoft.EntityFrameworkCore.dll
+D:\mvc\WularItech solutions\publish\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\mvc\WularItech solutions\publish\Microsoft.EntityFrameworkCore.Relational.dll
+D:\mvc\WularItech solutions\publish\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\mvc\WularItech solutions\publish\Microsoft.Extensions.Caching.Abstractions.dll
+D:\mvc\WularItech solutions\publish\Microsoft.Extensions.Caching.Memory.dll
+D:\mvc\WularItech solutions\publish\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\mvc\WularItech solutions\publish\Microsoft.Extensions.DependencyInjection.dll
+D:\mvc\WularItech solutions\publish\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\mvc\WularItech solutions\publish\Microsoft.Extensions.Logging.dll
+D:\mvc\WularItech solutions\publish\Microsoft.Extensions.Logging.Abstractions.dll
+D:\mvc\WularItech solutions\publish\Microsoft.Extensions.Options.dll
+D:\mvc\WularItech solutions\publish\Microsoft.Extensions.Primitives.dll
+D:\mvc\WularItech solutions\publish\Microsoft.Identity.Client.dll
+D:\mvc\WularItech solutions\publish\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\mvc\WularItech solutions\publish\Microsoft.IdentityModel.Abstractions.dll
+D:\mvc\WularItech solutions\publish\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\mvc\WularItech solutions\publish\Microsoft.IdentityModel.Logging.dll
+D:\mvc\WularItech solutions\publish\Microsoft.IdentityModel.Protocols.dll
+D:\mvc\WularItech solutions\publish\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\mvc\WularItech solutions\publish\Microsoft.IdentityModel.Tokens.dll
+D:\mvc\WularItech solutions\publish\Microsoft.SqlServer.Server.dll
+D:\mvc\WularItech solutions\publish\Microsoft.Win32.SystemEvents.dll
+D:\mvc\WularItech solutions\publish\Newtonsoft.Json.dll
+D:\mvc\WularItech solutions\publish\System.ClientModel.dll
+D:\mvc\WularItech solutions\publish\System.Configuration.ConfigurationManager.dll
+D:\mvc\WularItech solutions\publish\System.Drawing.Common.dll
+D:\mvc\WularItech solutions\publish\System.IdentityModel.Tokens.Jwt.dll
+D:\mvc\WularItech solutions\publish\System.Memory.Data.dll
+D:\mvc\WularItech solutions\publish\System.Runtime.Caching.dll
+D:\mvc\WularItech solutions\publish\System.Security.Cryptography.ProtectedData.dll
+D:\mvc\WularItech solutions\publish\System.Security.Permissions.dll
+D:\mvc\WularItech solutions\publish\System.Windows.Extensions.dll
+D:\mvc\WularItech solutions\publish\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\mvc\WularItech solutions\publish\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\mvc\WularItech solutions\publish\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\mvc\WularItech solutions\publish\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\mvc\WularItech solutions\publish\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\mvc\WularItech solutions\publish\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\mvc\WularItech solutions\publish\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\mvc\WularItech solutions\publish\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+D:\mvc\WularItech solutions\publish\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+D:\mvc\WularItech solutions\publish\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+D:\mvc\WularItech solutions\publish\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\mvc\WularItech solutions\publish\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\mvc\WularItech solutions\publish\WularItech solutions.deps.json

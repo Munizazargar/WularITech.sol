@@ -1,0 +1,279 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/homepage.css" />
+    <style>
+        /* ===============================
+           SCROLL REVEAL EFFECT
+        =============================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.9s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.2s; }
+        .reveal-delay-2 { transition-delay: 0.4s; }
+        .reveal-delay-3 { transition-delay: 0.6s; }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #E07B39;
+            margin: 12px auto 0;
+            border-radius: 5px;
+            transform: scaleX(0);
+            transition: transform 0.6s ease;
+        }
+
+        .section-title.active::after {
+            transform: scaleX(1);
+        }
+    </style>
+</head>
+
+<!-- ================= HERO SECTION ================= -->
+<section class="hero reveal">
+    <div class="hero-container">
+
+        <div class="hero-content">
+            <div class="hero-badge reveal reveal-delay-1">
+                <span>#1 Tech Solution in Srinagar</span>
+            </div>
+
+            <h1 class="hero-title reveal reveal-delay-2">
+                Secure Your World<br />
+                with <span class="text-orange">Wular i Tech</span>
+            </h1>
+
+            <p class="hero-description reveal reveal-delay-3">
+                Premium camera installations, high-grade electrical wires, and expert 
+                technical services right at your doorstep in Kashmir.
+            </p>
+
+        
+
+            <div class="hero-buttons reveal reveal-delay-3">
+                <a href="/Product" class="btn-primary">Shop Product</a>
+                <a href="/Services" class="btn-secondary">Our Services</a>
+            </div>
+        </div>
+
+        
+
+        <!-- HERO IMAGE RESTORED -->
+        <div class="hero-image reveal reveal-delay-2">
+            <img src="~/images/cctv.jpg" alt="Security Cameras" style="max-width:100%; border-radius:16px;" />
+
+            <div class="trust-badge">
+                <div class="trust-content">
+                    <h4>Trusted Service</h4>
+                    <span style="color:#E07B39;">100% Satisfaction</span>
+                    <p style="color:#6B7280; font-size:14px;">
+                        Expert technicians available throughout Srinagar.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== Stats Section Start ===== -->
+<section class="stats-section reveal">
+  <div class="container">
+    <h2 class="stats-title section-title reveal">What I’ve Built</h2>
+
+    <div class="stats-wrapper">
+
+      <div class="stat-card reveal reveal-delay-1">
+        <h2 class="stat-number">15+</h2>
+        <p>Projects Completed</p>
+      </div>
+
+      <div class="stat-card reveal reveal-delay-2">
+        <h2 class="stat-number">2+</h2>
+        <p>Years of Learning</p>
+      </div>
+
+      <div class="stat-card reveal reveal-delay-3">
+        <h2 class="stat-number">10+</h2>
+        <p>Technologies Used</p>
+      </div>
+
+      <div class="stat-card reveal reveal-delay-3">
+        <h2 class="stat-number">100%</h2>
+        <p>Client Satisfaction</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ===== Stats Section End ===== -->
+
+
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="testimonials reveal" 
+         style="padding:140px 24px; background:#f9fafb; text-align:center; min-height:80vh; display:flex; align-items:center;">
+    
+    <div class="container" style="width:100%;">
+
+        <h2 class="section-title reveal" style="margin-bottom:20px;">
+            What Our Clients Say
+        </h2>
+
+        <p class="section-subtitle reveal reveal-delay-1" 
+           style="color:#6B7280; margin-bottom:70px; font-size:17px;">
+            We take pride in delivering top-notch tech solutions
+        </p>
+
+        <div style="display:flex; flex-wrap:wrap; gap:40px; justify-content:center;">
+
+            <div class="testimonial-card reveal reveal-delay-1"
+                 style="background:#fff; padding:40px; border-radius:20px; 
+                        box-shadow:0 15px 35px rgba(0,0,0,0.08); 
+                        max-width:320px; min-height:220px;
+                        display:flex; flex-direction:column; justify-content:center;">
+                
+                <p style="color:#6B7280; font-size:15px; margin-bottom:20px;">
+                    "WularTech installed our security system flawlessly."
+                </p>
+                <h4 style="color:#1A1A2E; margin-bottom:6px;">– Aamir Khan</h4>
+                <span style="color:#E07B39;">Homeowner</span>
+            </div>
+
+            <div class="testimonial-card reveal reveal-delay-2"
+                 style="background:#fff; padding:40px; border-radius:20px; 
+                        box-shadow:0 15px 35px rgba(0,0,0,0.08); 
+                        max-width:320px; min-height:220px;
+                        display:flex; flex-direction:column; justify-content:center;">
+                
+                <p style="color:#6B7280; font-size:15px; margin-bottom:20px;">
+                    "The wiring work was perfect and professional."
+                </p>
+                <h4 style="color:#1A1A2E; margin-bottom:6px;">– Fatima Wani</h4>
+                <span style="color:#E07B39;">Business Owner</span>
+            </div>
+
+            <div class="testimonial-card reveal reveal-delay-3"
+                 style="background:#fff; padding:40px; border-radius:20px; 
+                        box-shadow:0 15px 35px rgba(0,0,0,0.08); 
+                        max-width:320px; min-height:220px;
+                        display:flex; flex-direction:column; justify-content:center;">
+                
+                <p style="color:#6B7280; font-size:15px; margin-bottom:20px;">
+                    "Crystal-clear footage and easy remote access."
+                </p>
+                <h4 style="color:#1A1A2E; margin-bottom:6px;">– Rohit Singh</h4>
+                <span style="color:#E07B39;">Shop Owner</span>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ================= OUR WORK ================= -->
+<section class="our-work reveal" style="padding:80px 24px; background:#ffffff; text-align:center;">
+    <div class="container">
+
+        <h2 class="section-title reveal">Our Work</h2>
+        <p class="section-subtitle reveal reveal-delay-1" style="color:#6B7280; margin-bottom:40px;">
+            Some of the projects we've successfully completed
+        </p>
+
+        <div class="work-cards" style="display:flex; flex-wrap:wrap; gap:24px; justify-content:center;">
+
+            <!-- CARD 1 -->
+            <div class="work-card reveal reveal-delay-1" style="perspective:1000px;">
+                <div class="work-card-inner">
+                    
+                    <div class="work-card-front">
+                        <img src="~/images/ouw.jpg" alt="Project 1">
+                        <h4>Office CCTV Installation</h4>
+                    </div>
+
+                    <div class="work-card-back">
+                        <p>
+                            Complete surveillance setup for a commercial office including cameras and structured wiring.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="work-card reveal reveal-delay-2" style="perspective:1000px;">
+                <div class="work-card-inner">
+                    
+                    <div class="work-card-front">
+                        <img src="~/images/hsi.jpg" alt="Project 2">
+                        <h4>Home Security Setup</h4>
+                    </div>
+
+                    <div class="work-card-back">
+                        <p>
+                            High-quality home security installation with remote monitoring system.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="work-card reveal reveal-delay-3" style="perspective:1000px;">
+                <div class="work-card-inner">
+                    
+                    <div class="work-card-front">
+                        <img src="~/images/images.jpg" alt="Project 3">
+                        <h4>Electrical Wiring Upgrade</h4>
+                    </div>
+
+                    <div class="work-card-back">
+                        <p>
+                            Rewiring and electrical system upgrade for residential complex.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<script>
+    function revealOnScroll() {
+        const reveals = document.querySelectorAll(".reveal");
+
+        reveals.forEach((element) => {
+            const windowHeight = window.innerHeight;
+            const elementTop = element.getBoundingClientRect().top;
+            const revealPoint = 100;
+
+            if (elementTop < windowHeight - revealPoint && elementTop > -100) {
+                element.classList.add("active");
+            } else {
+                element.classList.remove("active"); // <-- THIS enables reverse animation
+            }
+        });
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+</script>
+
+
+
+

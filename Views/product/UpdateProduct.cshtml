@@ -1,0 +1,190 @@
+@model WularItech_solutions.Models.Product
+
+@{
+    ViewData["Title"] = "Update Product";
+}
+
+<link rel="stylesheet" href="~/css/site.css" /> <!-- Your app theme CSS -->
+
+<div class="update-product-container">
+    <h2>Update Product</h2>
+
+    <form asp-action="UpdateProduct" method="post" enctype="multipart/form-data" class="product-form">
+        <input type="hidden" asp-for="ProductId" />
+
+        <!-- Current Image -->
+        @if (!string.IsNullOrEmpty(Model.ProductImage))
+        {
+            <div class="form-group">
+                <label>Current Image:</label>
+                <div class="current-image">
+                    <img src="@Model.ProductImage" alt="@Model.ProductName" />
+                </div>
+            </div>
+        }
+
+        <!-- Upload New Image -->
+        <div class="form-group">
+            <label>Change Image:</label>
+            <input type="file" name="image" class="form-control" />
+        </div>
+
+        <!-- Product Name -->
+        <div class="form-group">
+            <label asp-for="ProductName">Product Name</label>
+            <input asp-for="ProductName" class="form-control" placeholder="Enter product name" />
+            <span asp-validation-for="ProductName" class="text-danger"></span>
+        </div>
+
+        <!-- Product Description -->
+        <div class="form-group">
+            <label asp-for="ProductDescription">Description</label>
+            <textarea asp-for="ProductDescription" class="form-control" placeholder="Enter product description"></textarea>
+            <span asp-validation-for="ProductDescription" class="text-danger"></span>
+        </div>
+
+        <div class="form-row">
+            <!-- Product Price -->
+            <div class="form-group">
+                <label asp-for="ProductPrice">Price (₹)</label>
+                <input asp-for="ProductPrice" class="form-control" placeholder="0.00" step="0.01" />
+                <span asp-validation-for="ProductPrice" class="text-danger"></span>
+            </div>
+
+            <!-- Product Stock -->
+            <div class="form-group">
+                <label asp-for="ProductStock">Stock</label>
+                <input asp-for="ProductStock" class="form-control" placeholder="Quantity" />
+                <span asp-validation-for="ProductStock" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Update Product</button>
+            <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<style>
+/* Modern UI for Update Product Page */
+
+.update-product-container {
+    max-width: 800px;
+    margin: 80px auto;
+    padding: 40px 30px;
+    background-color: var(--bg-white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    font-family: var(--font-sans);
+}
+
+.update-product-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 28px;
+}
+
+.product-form .form-group {
+    margin-bottom: 20px;
+}
+
+.product-form .form-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.product-form .form-row .form-group {
+    flex: 1;
+}
+
+.product-form label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+    color: var(--text-dark);
+}
+
+.product-form input,
+.product-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color var(--transition-fast);
+}
+
+.product-form input:focus,
+.product-form textarea:focus {
+    border-color: var(--primary-orange);
+    outline: none;
+}
+
+.product-form textarea {
+    min-height: 100px;
+}
+
+.current-image img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 5px;
+    box-shadow: var(--shadow-sm);
+}
+
+.form-actions {
+    margin-top: 25px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.btn {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+.btn-primary {
+    background-color: var(--primary-orange);
+    color: #fff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-orange-hover);
+}
+
+.btn-secondary {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+}
+
+.text-danger {
+    font-size: 13px;
+}
+
+/* Responsive */
+media (max-width: 600px) {
+    .update-product-container {
+        margin: 30px 15px;
+        padding: 30px 20px;
+    }
+
+    .product-form .form-row {
+        flex-direction: column;
+    }
+}
+</style>

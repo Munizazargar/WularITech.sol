@@ -1,0 +1,61 @@
+# =========================
+# .NET / ASP.NET Core
+# =========================
+
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio folders
+.vs/
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# =========================
+# Environment & Secrets
+# =========================
+
+.env
+*.env
+.env.*
+appsettings.Development.json
+appsettings.Production.json
+secrets.json
+*.usersecrets
+
+# =========================
+# Publish Output
+# =========================
+
+out/
+publish/
+
+# =========================
+# Node (if ever used)
+# =========================
+
+node_modules/
+
+# =========================
+# OS Generated Files
+# =========================
+
+.DS_Store
+Thumbs.db
+
+# =========================
+# SQLite (optional if you use it locally)
+# =========================
+
+*.db
+*.sqlite
+*.sqlite3
