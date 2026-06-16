@@ -5,7 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - WularTech</title>
+
     <link rel="stylesheet" href="~/css/site.css" />
+    
     <!-- Render page-specific styles -->
     @RenderSection("Styles", required: false) <!-- Make it optional -->
     <link
@@ -40,33 +42,40 @@
                     <li><a href="/Product/index" class="nav-link">Product</a></li>
                     <li><a href="/Services" class="nav-link">Services</a></li>
                     <li><a href="/Contact" class="nav-link">Contact</a></li>
+                    <li><a href="/Booking/Create" class="nav-link">Book Service</a></li>
+                    <li><a href="/Booking/Track" class="nav-link">Track Booking</a></li>
+                    <li><a href="/Home/Pricing" class="nav-link">Pricing</a></li>
+                    @if (!string.IsNullOrEmpty(Context.Request.Cookies["jwt"]))
+                    {
+                        <li><a href="/Admin" class="nav-link">Admin</a></li>
+                    }
                 </ul>
 
-              @{
-    var token = Context.Request.Cookies["jwt"];
-}
+                @{
+                    var token = Context.Request.Cookies["jwt"];
+                }
 
-<div class="auth-buttons">
-    @if (!string.IsNullOrEmpty(token))
-    {
-        <form asp-controller="Account" asp-action="Logout" method="post" style="display:inline;">
-            <button type="submit" class="btn-register" style="border:none; cursor:pointer;">
-                Logout
-            </button>
-        </form>
-    }
-    else
-    {
-        <a href="/Account/Login" class="btn-login">Login</a>
-        <a href="/Account/Register" class="btn-register">Register</a>
-    }
-</div>
+                <div class="auth-buttons">
+                    @if (!string.IsNullOrEmpty(token))
+                    {
+                        <form asp-controller="Account" asp-action="Logout" method="post" style="display:inline;">
+                            <button type="submit" class="btn-register" style="border:none; cursor:pointer;">
+                                Logout
+                            </button>
+                        </form>
+                    }
+                    else
+                    {
+                        <a href="/Account/Login" class="btn-login">Login</a>
+                        <a href="/Account/Register" class="btn-register">Register</a>
+                    }
+                </div>
 
 
 
 
                 <a href="https://wa.me/918825048116?text=Hello%20WularTech,%20I%20want%20to%20book%20a%20service"
-                       target="_blank" class="btn-book">
+                   target="_blank" class="btn-book">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path
                         d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
@@ -111,9 +120,11 @@
                 <div class="footer-column reveal reveal-delay-1">
                     <h4>Company</h4>
                     <ul>
-                        <li><a href="/About">About Us</a></li>
+                        <li><a href="/#about">About Us</a></li>
                         <li><a href="/Services">Services</a></li>
                         <li><a href="/Contact">Contact</a></li>
+                        <li><a href="/Home/Pricing">Pricing</a></li>
+                        
                     </ul>
                 </div>
 
@@ -137,11 +148,35 @@
                         </li>
                         <li>WhatsApp:
                             <a href="https://wa.me/918825048116" target="_blank"
-                                   style="color:#E07B39; text-decoration:none;">
+                               style="color:#E07B39; text-decoration:none;">
                                 +91 88250 48116
                             </a>
                         </li>
                     </ul>
+                </div>
+
+
+            </div>
+
+            <!-- ================= WORKING ACROSS KASHMIR ================= -->
+            <div class="footer-service-area">
+
+                <h4 class="footer-area-title">
+                    Serving Across Kashmir
+                </h4>
+
+                <div class="footer-locations">
+                    <span>📍 Srinagar</span>
+                    <span>📍 Baramulla</span>
+                    <span>📍 Sopore</span>
+                    <span>📍 Bandipora</span>
+                    <span>📍 Kupwara</span>
+                    <span>📍 Ganderbal</span>
+                    <span>📍 Budgam</span>
+                    <span>📍 Pulwama</span>
+                    <span>📍 Shopian</span>
+                    <span>📍 Kulgam</span>
+                    <span>📍 Anantnag</span>
                 </div>
 
             </div>
@@ -154,17 +189,17 @@
     </footer>
 
     <script>
-        const toggleBtn = document.getElementById("themeToggle");
+            const toggleBtn = document.getElementById("themeToggle");
 
-        toggleBtn.addEventListener("click", () => {
-            document.body.classList.toggle("dark-mode");
+            toggleBtn.addEventListener("click", () => {
+                document.body.classList.toggle("dark-mode");
 
-            if (document.body.classList.contains("dark-mode")) {
-                toggleBtn.textContent = "☀️ Light Mode";
-            } else {
-                toggleBtn.textContent = "🌙 Dark Mode";
-            }
-        });
+                if (document.body.classList.contains("dark-mode")) {
+                    toggleBtn.textContent = "☀️ Light Mode";
+                } else {
+                    toggleBtn.textContent = "🌙 Dark Mode";
+                }
+            });
     </script>
 
 

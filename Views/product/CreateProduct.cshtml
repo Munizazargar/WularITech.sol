@@ -38,7 +38,7 @@
         <div class="form-row">
             <div class="form-group">
                 <label asp-for="ProductPrice">Product Price</label>
-                <input asp-for="ProductPrice" class="form-control" step="0.01" placeholder="0.00" />
+                <input asp-for="ProductPrice" type="number" class="form-control" step="0.01" placeholder="0.00" min="0" />
                 <span asp-validation-for="ProductPrice" class="text-danger"></span>
             </div>
 

@@ -92,6 +92,6 @@ namespace WularItech_solutions.Controllers
             Response.Cookies.Delete("jwt");
             return RedirectToAction("Login", "Account");
         }
-
+      
     }
 }

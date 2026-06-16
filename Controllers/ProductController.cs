@@ -123,19 +123,32 @@ namespace WularItech_solutions.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
-        {
-            var products = await dbContext.Products.ToListAsync();
-            return View(products);
-        }
-        [HttpGet]
-        public IActionResult Details(Guid id)
-        {
-            var product = dbContext.Products.FirstOrDefault(p => p.ProductId == id);
-            if (product == null)
-                return NotFound();
+       [HttpGet]
+public async Task<IActionResult> Index()
+{
+    var token = Request.Cookies["jwt"];
+    ViewBag.IsAdmin = tokenService.IsAdmin(token);
+    
+    var products = await dbContext.Products.ToListAsync();
+    return View(products);
+}
+   
 
-            return View(product); // Pass the product to the view 
+
+        [HttpGet]
+        public async Task<IActionResult> Details(Guid id)
+        {
+            // If the ID is empty, it's a routing failure
+            if (id == Guid.Empty) return NotFound();
+
+            var product = await dbContext.Products.FirstOrDefaultAsync(p => p.ProductId == id);
+
+            if (product == null)
+            {
+                return NotFound(); // This prevents passing NULL to the Details View
+            }
+
+            return View(product);
         }
 
     }

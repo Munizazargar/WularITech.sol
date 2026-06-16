@@ -1,20 +1,17 @@
-# 1. Use the .NET 8 SDK to build the app
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copy everything and restore dependencies
 COPY . .
-RUN dotnet restore
+RUN dotnet restore "WularItech solutions.csproj"
+RUN dotnet publish "WularItech solutions.csproj" -c Release -o /app/publish
 
-# Build and publish the release
-RUN dotnet publish -c Release -o /app/publish
+# DEBUG: show what got published
+RUN ls -la /app/publish/wwwroot/css/
 
-# 2. Use the .NET 8 ASP.NET runtime to run the app
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build /app/publish .
 
-# Railway uses the PORT environment variable automatically
-ENV ASPNETCORE_URLS=http://+:8080
+ENV ASPNETCORE_URLS=http://+:${PORT:-10000}
 
 ENTRYPOINT ["dotnet", "WularItech solutions.dll"]

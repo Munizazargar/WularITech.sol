@@ -14,7 +14,7 @@ namespace WularItech_solutions.Services
 
         public TokenService(IConfiguration configuration)
         {
-            _secretKey = configuration["Jwt:SecretKey"] 
+            _secretKey = configuration["Jwt:SecretKey"]
                          ?? throw new Exception("JWT SecretKey not configured.");
         }
 
@@ -32,7 +32,7 @@ namespace WularItech_solutions.Services
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
-                
+
                 claims: claims,
                 expires: DateTime.UtcNow.AddHours(1),
                 signingCredentials: creds
@@ -63,31 +63,35 @@ namespace WularItech_solutions.Services
 
             return Guid.Parse(userIdClaim.Value);
         }
-         // ⚡ New method: check if the user is admin
+        // ⚡ New method: check if the user is admin
         public bool IsAdmin(string token)
         {
-            if (string.IsNullOrEmpty(token))
-                return false;
+            if (string.IsNullOrEmpty(token)) return false;
 
-            var handler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes(_secretKey);
-
-            var validationParams = new TokenValidationParameters
+            try
             {
-                ValidateIssuer = false,
-                ValidateAudience = false,
-                ValidateLifetime = true,
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(key)
-            };
+                var handler = new JwtSecurityTokenHandler();
+                var key = Encoding.UTF8.GetBytes(_secretKey);
 
-            var principal = handler.ValidateToken(token, validationParams, out _);
+                var validationParams = new TokenValidationParameters
+                {
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ValidateLifetime = true, // This throws an exception if expired!
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key)
+                };
 
-            var adminClaim = principal.FindFirst("IsAdmin");
-            if (adminClaim == null)
+                var principal = handler.ValidateToken(token, validationParams, out _);
+                var adminClaim = principal.FindFirst("IsAdmin");
+
+                return adminClaim != null && adminClaim.Value.ToLower() == "true";
+            }
+            catch
+            {
+                // If token is invalid or expired, just return false. don't crash!
                 return false;
-
-            return adminClaim.Value.ToLower() == "true";
+            }
         }
     }
 }

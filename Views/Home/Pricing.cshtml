@@ -1,0 +1,201 @@
+@{
+    ViewData["Title"] = "Pricing";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/site.css" />
+}
+
+<!-- Hero -->
+<section style="padding-top: 120px; padding-bottom: 60px; background: var(--bg-white); text-align: center;">
+    <div class="container">
+        <div class="hero-badge" style="display: inline-flex; margin-bottom: 16px;">
+            <span>Transparent Pricing</span>
+        </div>
+        <h1 class="section-title" style="font-family: var(--font-serif); font-size: 48px; margin-bottom: 16px;">
+            Simple, <span class="text-orange">Honest</span> Pricing
+        </h1>
+        <p class="section-subtitle" style="max-width: 560px; margin: 0 auto 48px;">
+            No hidden charges. No surprises. Just quality service at fair prices across Kashmir.
+        </p>
+    </div>
+</section>
+
+<!-- Pricing Cards -->
+<section style="padding: 20px 0 80px; background: var(--bg-white);">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 1100px; margin: 0 auto;">
+
+            <!-- CCTV Installation -->
+            <div class="reveal" style="background: var(--bg-white); border: 1px solid var(--border-color); border-radius: 20px; padding: 36px; box-shadow: var(--shadow-md); transition: all 0.3s ease;">
+                <div style="width: 52px; height: 52px; background: rgba(224,123,57,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                    <span style="font-size: 24px;">📷</span>
+                </div>
+                <h3 style="font-size: 20px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px;">CCTV Installation</h3>
+                <p style="color: var(--text-gray); font-size: 14px; margin-bottom: 24px;">Professional installation with full wiring and setup</p>
+                <div style="margin-bottom: 24px;">
+                    <span style="font-size: 36px; font-weight: 700; color: var(--primary-orange);">₹1,500</span>
+                    <span style="color: var(--text-gray); font-size: 14px;"> / camera</span>
+                </div>
+                <ul style="list-style: none; padding: 0; margin-bottom: 32px; display: flex; flex-direction: column; gap: 12px;">
+                    <li style="display: flex; align-items: center; gap: 10px; color: var(--text-gray); font-size: 14px;">
+                        <span style="color: #16A34A; font-weight: 700;">✓</span> Camera mounting & positioning
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px; color: var(--text-gray); font-size: 14px;">
+                        <span style="color: #16A34A; font-weight: 700;">✓</span> Full wiring & cabling
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px; color: var(--text-gray); font-size: 14px;">
+                        <span style="color: #16A34A; font-weight: 700;">✓</span> DVR/NVR connection
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px; color: var(--text-gray); font-size: 14px;">
+                        <span style="color: #16A34A; font-weight: 700;">✓</span> Mobile app setup
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px; color: var(--text-gray); font-size: 14px;">
+                        <span style="color: #16A34A; font-weight: 700;">✓</span> 30-day service warranty
+                    </li>
+                </ul>
+                <a href="/Booking/Create" class="btn-primary" style="display: block; text-align: center; padding: 14px;">Book Now</a>
+            </div>
+
+            <!-- CCTV Package — POPULAR -->
+            <div class="reveal reveal-delay-1" style="background: var(--dark-navy); border: 2px solid var(--primary-orange); border-radius: 20px; padding: 36px; box-shadow: var(--shadow-xl); position: relative; transition: all 0.3s ease;">
+                <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--primary-orange); color: #fff; padding: 4px 18px; border-radius: 50px; font-size: 12px; font-weight: 700; letter-spacing: 1px; white-space: nowrap;">
+                    MOST POPULAR
+                </div>
+                <div style="width: 52px; height: 52px; background: rgba(224,123,57,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                    <span style="font-size: 24px;">🏠</span>
+                </div>
+                <h3 style="font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 8px;">Home Security Package</h3>
+                <p style="color: rgba(255,255,255,0.6); font-size: 14px; margin-bottom: 24px;">Complete 4-camera home security system</p>
+                <div style="margin-bottom: 24px;">
+                    <span style="font-size: 36px; font-weight: 700; color: var(--primary-orange);">₹8,999</span>
+                    <span style="color: rgba(255,255,255,0.5); font-size: 14px;"> / package</span>
+                </div>
+                <ul style="list-style: none; padding: 0; margin-bottom: 32px; display: flex; flex-direction: column; gap: 12px;">
+                    <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.8); font-size: 14px;">
+                        <span style="color: var(--primary-orange); font-weight: 700;">✓</span> 4 HD cameras included
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.8); font-size: 14px;">
+                        <span style="color: var(--primary-orange); font-weight: 700;">✓</span> DVR with 1TB storage
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.8); font-size: 14px;">
+                        <span style="color: var(--primary-orange); font-weight: 700;">✓</span> Full installation included
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.8); font-size: 14px;">
+                        <span style="color: var(--primary-orange); font-weight: 700;">✓</span> Night vision cameras
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.8); font-size: 14px;">
+                        <span style="color: var(--primary-orange); font-weight: 700;">✓</span> Mobile remote viewing
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.8); font-size: 14px;">
+                        <span style="color: var(--primary-orange); font-weight: 700;">✓</span> 90-day service warranty
+                    </li>
+                </ul>
+                <a href="/Booking/Create" style="display: block; text-align: center; padding: 14px; background: var(--primary-orange); color: #fff; border-radius: 8px; font-weight: 600; font-size: 15px; transition: all 0.3s ease;">Book Now</a>
+            </div>
+
+            <!-- Electrical Wiring -->
+            <div class="reveal reveal-delay-2" style="background: var(--bg-white); border: 1px solid var(--border-color); border-radius: 20px; padding: 36px; box-shadow: var(--shadow-md); transition: all 0.3s ease;">
+                <div style="width: 52px; height: 52px; background: rgba(224,123,57,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                    <span style="font-size: 24px;">⚡</span>
+                </div>
+                <h3 style="font-size: 20px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px;">Electrical Wiring</h3>
+                <p style="color: var(--text-gray); font-size: 14px; margin-bottom: 24px;">Safe and certified electrical work for homes & shops</p>
+                <div style="margin-bottom: 24px;">
+                    <span style="font-size: 36px; font-weight: 700; color: var(--primary-orange);">₹500</span>
+                    <span style="color: var(--text-gray); font-size: 14px;"> / point</span>
+                </div>
+                <ul style="list-style: none; padding: 0; margin-bottom: 32px; display: flex; flex-direction: column; gap: 12px;">
+                    <li style="display: flex; align-items: center; gap: 10px; color: var(--text-gray); font-size: 14px;">
+                        <span style="color: #16A34A; font-weight: 700;">✓</span> Switch & socket installation
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px; color: var(--text-gray); font-size: 14px;">
+                        <span style="color: #16A34A; font-weight: 700;">✓</span> Concealed wiring
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px; color: var(--text-gray); font-size: 14px;">
+                        <span style="color: #16A34A; font-weight: 700;">✓</span> MCB & DB box fitting
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px; color: var(--text-gray); font-size: 14px;">
+                        <span style="color: #16A34A; font-weight: 700;">✓</span> Safety testing included
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px; color: var(--text-gray); font-size: 14px;">
+                        <span style="color: #16A34A; font-weight: 700;">✓</span> 60-day warranty
+                    </li>
+                </ul>
+                <a href="/Booking/Create" class="btn-primary" style="display: block; text-align: center; padding: 14px;">Book Now</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Additional Services Table -->
+<section style="padding: 0 0 80px; background: var(--bg-light);">
+    <div class="container" style="padding-top: 60px;">
+        <h2 class="section-title" style="margin-bottom: 8px;">All Service Rates</h2>
+        <p class="section-subtitle">Quick reference for all our services</p>
+
+        <div style="max-width: 800px; margin: 0 auto; background: var(--bg-white); border-radius: 16px; border: 1px solid var(--border-color); overflow: hidden; box-shadow: var(--shadow-md);">
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="background: var(--dark-navy);">
+                        <th style="padding: 16px 24px; text-align: left; color: #fff; font-size: 14px; font-weight: 600;">Service</th>
+                        <th style="padding: 16px 24px; text-align: left; color: #fff; font-size: 14px; font-weight: 600;">Starting Price</th>
+                        <th style="padding: 16px 24px; text-align: left; color: #fff; font-size: 14px; font-weight: 600;">Note</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var rows = new[]
+                        {
+                            new { Service = "📷 CCTV Installation", Price = "₹1,500", Note = "Per camera" },
+                            new { Service = "🔧 CCTV Repair", Price = "₹500", Note = "Diagnosis free" },
+                            new { Service = "🖥️ DVR/NVR Setup", Price = "₹800", Note = "Per device" },
+                            new { Service = "🔍 CCTV Maintenance", Price = "₹300", Note = "Per visit" },
+                            new { Service = "⚡ Electrical Wiring", Price = "₹500", Note = "Per point" },
+                            new { Service = "🌐 Network Setup", Price = "₹1,000", Note = "Per location" },
+                            new { Service = "🏠 Home Security Package", Price = "₹8,999", Note = "4 cameras + DVR" },
+                        };
+                        bool isAlt = false;
+                    }
+                    @foreach (var row in rows)
+                    {
+                        <tr style="background: @(isAlt ? "var(--bg-light)" : "var(--bg-white)");">
+                            <td style="padding: 14px 24px; color: var(--text-dark); font-size: 14px; font-weight: 500; border-bottom: 1px solid var(--border-color);">@row.Service</td>
+                            <td style="padding: 14px 24px; color: var(--primary-orange); font-size: 15px; font-weight: 700; border-bottom: 1px solid var(--border-color);">@row.Price</td>
+                            <td style="padding: 14px 24px; color: var(--text-gray); font-size: 13px; border-bottom: 1px solid var(--border-color);">@row.Note</td>
+                        </tr>
+                        isAlt = !isAlt;
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <p style="text-align: center; color: var(--text-gray); font-size: 13px; margin-top: 16px;">
+            * Prices may vary based on location and complexity. Contact us for a free quote.
+        </p>
+    </div>
+</section>
+
+<!-- CTA -->
+<section style="padding: 80px 24px; background: var(--dark-navy); text-align: center;">
+    <div class="container">
+        <h2 style="font-family: var(--font-serif); font-size: 36px; font-weight: 700; color: #fff; margin-bottom: 16px;">
+            Not sure what you need?
+        </h2>
+        <p style="color: rgba(255,255,255,0.6); font-size: 16px; margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto;">
+            Contact us on WhatsApp and we'll recommend the right solution for your home or business.
+        </p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <a href="https://wa.me/918825048116" target="_blank" class="btn-book" style="padding: 14px 28px;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                </svg>
+                Chat on WhatsApp
+            </a>
+            <a href="/Booking/Create" class="btn-secondary" style="padding: 14px 28px; background: transparent; border-color: rgba(255,255,255,0.3); color: #fff;">
+                Book a Service
+            </a>
+        </div>
+    </div>
+</section>

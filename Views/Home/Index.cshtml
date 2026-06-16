@@ -3,7 +3,9 @@
 }
 
 <head>
-    <link rel="stylesheet" href="~/css/homepage.css" />
+    <link rel="stylesheet" href="/css/site.css" asp-append-version="true" />
+    
+     
     <style>
         /* ===============================
            SCROLL REVEAL EFFECT
@@ -88,100 +90,169 @@
     </div>
 </section>
 
-<!-- ===== Stats Section Start ===== -->
-<section class="stats-section reveal">
+<!-- ================= ABOUT SECTION ================= -->
+
+<section id="about" class="about-section reveal">
   <div class="container">
-    <h2 class="stats-title section-title reveal">What I’ve Built</h2>
+    <div class="about-grid">
 
-    <div class="stats-wrapper">
+      <!-- LEFT SIDE -->
+      <div class="reveal reveal-delay-1">
+        <span class="about-badge">About Wular i Tech</span>
 
-      <div class="stat-card reveal reveal-delay-1">
-        <h2 class="stat-number">15+</h2>
-        <p>Projects Completed</p>
+        <h2 class="about-title">
+          Kashmir's Most Trusted<br/>
+          <span class="text-orange">Service Booking Platform</span>
+        </h2>
+
+        <p class="about-desc">
+          Wular i Tech is a one-stop service booking platform built for the people of Kashmir. 
+          Whether you need a CCTV camera installed, your electrical wiring checked, or an 
+          ongoing maintenance plan — you can book it all through us in minutes.
+        </p>
+
+        <p class="about-desc">
+          We connect you with verified, skilled technicians across the Valley — offering the 
+          most affordable rates without compromising on quality. No middlemen, no delays, 
+          just reliable service at your doorstep.
+        </p>
+
+        <div class="about-pills">
+          <span class="about-pill">✔ CCTV Installation</span>
+          <span class="about-pill">✔ Maintenance & Repair</span>
+          <span class="about-pill">✔ Electrical Wiring</span>
+          <span class="about-pill">✔ Online Booking</span>
+          <span class="about-pill">✔ Doorstep Service</span>
+        </div>
+
+        <a href="/Services" class="btn-primary">Book a Service</a>
       </div>
 
-      <div class="stat-card reveal reveal-delay-2">
-        <h2 class="stat-number">2+</h2>
-        <p>Years of Learning</p>
-      </div>
+      <!-- RIGHT SIDE -->
+      <div class="about-features reveal reveal-delay-2">
 
-      <div class="stat-card reveal reveal-delay-3">
-        <h2 class="stat-number">10+</h2>
-        <p>Technologies Used</p>
-      </div>
+        <div class="about-feature-card">
+          <div class="feat-icon">📅</div>
+          <div>
+            <h4 class="feat-title">Easy Online Booking</h4>
+            <p class="feat-desc">Book any installation or maintenance service from your phone — in under 2 minutes, anytime.</p>
+          </div>
+        </div>
 
-      <div class="stat-card reveal reveal-delay-3">
-        <h2 class="stat-number">100%</h2>
-        <p>Client Satisfaction</p>
-      </div>
+        <div class="about-feature-card">
+          <div class="feat-icon">🛡️</div>
+          <div>
+            <h4 class="feat-title">Verified Technicians Only</h4>
+            <p class="feat-desc">Every technician is background-checked and skill-verified — professional and trustworthy.</p>
+          </div>
+        </div>
 
+        <div class="about-feature-card">
+          <div class="feat-icon">💰</div>
+          <div>
+            <h4 class="feat-title">Best Prices in the Valley</h4>
+            <p class="feat-desc">Most competitive rates in Kashmir with zero hidden charges. Transparent pricing always.</p>
+          </div>
+        </div>
+
+        <div class="about-feature-card">
+          <div class="feat-icon">⚡</div>
+          <div>
+            <h4 class="feat-title">Same-Day Response</h4>
+            <p class="feat-desc">Most service requests are confirmed and scheduled within hours of booking.</p>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
-<!-- ===== Stats Section End ===== -->
+
+
+
+
+<!-- ===== Stats Section ===== -->
+<section class="stats-section reveal">
+  <div class="container">
+    <h2 class="stats-title section-title reveal">By the Numbers</h2>
+    <p style="text-align:center; color:#6B7280; margin-bottom:20px;" class="reveal reveal-delay-1">
+      Our work speaks for itself — real results across Kashmir
+    </p>
+    <div class="stats-wrapper">
+      <div class="stat-card reveal reveal-delay-1">
+        <h2 class="stat-number">200+</h2>
+        <p>CCTV Cameras Installed</p>
+      </div>
+      <div class="stat-card reveal reveal-delay-2">
+        <h2 class="stat-number">150+</h2>
+        <p>Happy Clients</p>
+      </div>
+      <div class="stat-card reveal reveal-delay-3">
+        <h2 class="stat-number">80+</h2>
+        <p>Projects Completed</p>
+      </div>
+      <div class="stat-card reveal reveal-delay-3">
+        <h2 class="stat-number">4.9★</h2>
+        <p>Average Client Rating</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== About Us Section ===== -->
+
 
 
 
 <!-- ================= TESTIMONIALS ================= -->
-<section class="testimonials reveal" 
-         style="padding:140px 24px; background:#f9fafb; text-align:center; min-height:80vh; display:flex; align-items:center;">
-    
-    <div class="container" style="width:100%;">
+<section class="testimonials reveal">
+    <div class="container">
 
-        <h2 class="section-title reveal" style="margin-bottom:20px;">
-            What Our Clients Say
-        </h2>
+       <h2 class="section-title reveal"
+    style="font-size:42px;font-weight:700;text-align:center;color:#1A1A2E;margin-bottom:12px;">
+    What Our Clients Say
+</h2>
 
-        <p class="section-subtitle reveal reveal-delay-1" 
-           style="color:#6B7280; margin-bottom:70px; font-size:17px;">
-            We take pride in delivering top-notch tech solutions
-        </p>
+        <div style="width:70px;height:4px;background:#E07B39;margin:14px auto 25px;border-radius:999px;"></div>
 
-        <div style="display:flex; flex-wrap:wrap; gap:40px; justify-content:center;">
+<p class="section-subtitle reveal reveal-delay-1"
+   style="max-width:700px;margin:0 auto 50px;text-align:center;font-size:17px;line-height:1.8;color:#6B7280;">
+    We take pride in delivering top-notch tech solutions across Kashmir
+</p>
 
-            <div class="testimonial-card reveal reveal-delay-1"
-                 style="background:#fff; padding:40px; border-radius:20px; 
-                        box-shadow:0 15px 35px rgba(0,0,0,0.08); 
-                        max-width:320px; min-height:220px;
-                        display:flex; flex-direction:column; justify-content:center;">
-                
-                <p style="color:#6B7280; font-size:15px; margin-bottom:20px;">
-                    "WularTech installed our security system flawlessly."
+        <div class="stats-wrapper">
+
+            <div class="stat-card reveal reveal-delay-1">
+                <p style="font-style:italic; margin-bottom:20px;">
+                    "Wular i Tech installed our CCTV system flawlessly. The team was professional and completed the work on time."
                 </p>
-                <h4 style="color:#1A1A2E; margin-bottom:6px;">– Aamir Khan</h4>
-                <span style="color:#E07B39;">Homeowner</span>
+
+                <h4>Aamir Khan</h4>
+                <span class="text-orange">Homeowner</span>
             </div>
 
-            <div class="testimonial-card reveal reveal-delay-2"
-                 style="background:#fff; padding:40px; border-radius:20px; 
-                        box-shadow:0 15px 35px rgba(0,0,0,0.08); 
-                        max-width:320px; min-height:220px;
-                        display:flex; flex-direction:column; justify-content:center;">
-                
-                <p style="color:#6B7280; font-size:15px; margin-bottom:20px;">
-                    "The wiring work was perfect and professional."
+            <div class="stat-card reveal reveal-delay-2">
+                <p style="font-style:italic; margin-bottom:20px;">
+                    "Excellent electrical wiring service with transparent pricing. Highly recommended for homes and businesses."
                 </p>
-                <h4 style="color:#1A1A2E; margin-bottom:6px;">– Fatima Wani</h4>
-                <span style="color:#E07B39;">Business Owner</span>
+
+                <h4>Fatima Wani</h4>
+                <span class="text-orange">Business Owner</span>
             </div>
 
-            <div class="testimonial-card reveal reveal-delay-3"
-                 style="background:#fff; padding:40px; border-radius:20px; 
-                        box-shadow:0 15px 35px rgba(0,0,0,0.08); 
-                        max-width:320px; min-height:220px;
-                        display:flex; flex-direction:column; justify-content:center;">
-                
-                <p style="color:#6B7280; font-size:15px; margin-bottom:20px;">
-                    "Crystal-clear footage and easy remote access."
+            <div class="stat-card reveal reveal-delay-3">
+                <p style="font-style:italic; margin-bottom:20px;">
+                    "The CCTV footage quality is outstanding and remote access works perfectly. Great support from the team."
                 </p>
-                <h4 style="color:#1A1A2E; margin-bottom:6px;">– Rohit Singh</h4>
-                <span style="color:#E07B39;">Shop Owner</span>
+
+                <h4>Rohit Singh</h4>
+                <span class="text-orange">Shop Owner</span>
             </div>
 
         </div>
+
     </div>
 </section>
-
 
 <!-- ================= OUR WORK ================= -->
 <section class="our-work reveal" style="padding:80px 24px; background:#ffffff; text-align:center;">

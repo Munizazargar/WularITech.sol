@@ -1,0 +1,112 @@
+@model List<WularItech_solutions.Models.Booking>
+
+@{
+    ViewData["Title"] = "Track Your Booking";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin.css" />
+}
+
+<div class="booking-page">
+    <div class="booking-container">
+        <div class="booking-header">
+            <h1>Track Your Booking</h1>
+            <p>Enter your email or phone number to see your booking status.</p>
+        </div>
+
+        @if (TempData["Error"] != null)
+        {
+            <div class="admin-alert admin-alert--error">@TempData["Error"]</div>
+        }
+
+        <div class="admin-card admin-form-card">
+            <form asp-controller="Booking" asp-action="Track" method="post">
+                <div class="admin-form-grid">
+                    <div class="admin-form-group admin-form-group--full">
+                        <label>Email Address or Phone Number</label>
+                        <input type="text" name="search" placeholder="your@email.com or +91 XXXXX XXXXX" required />
+                    </div>
+                </div>
+                <div class="admin-form-actions">
+                    <button type="submit" class="btn-admin-primary">Track Booking</button>
+                </div>
+            </form>
+        </div>
+
+        @if (Model != null && Model.Any())
+        {
+            <div style="margin-top: 32px;">
+                <h2 style="color: #111827; margin-bottom: 16px;">Your Bookings (@Model.Count)</h2>
+
+                @foreach (var booking in Model)
+                {
+                    var statusColor = booking.Status switch
+                    {
+                        "Confirmed"  => "#065f46",
+                        "InProgress" => "#1e40af",
+                        "Completed"  => "#5b21b6",
+                        "Cancelled"  => "#991b1b",
+                        _            => "#92400E"
+                    };
+
+                    var statusBg = booking.Status switch
+                    {
+                        "Confirmed"  => "#d1fae5",
+                        "InProgress" => "#dbeafe",
+                        "Completed"  => "#ede9fe",
+                        "Cancelled"  => "#fee2e2",
+                        _            => "#FEF3C7"
+                    };
+
+                    var statusEmoji = booking.Status switch
+                    {
+                        "Confirmed"  => "✅",
+                        "InProgress" => "🔧",
+                        "Completed"  => "🎉",
+                        "Cancelled"  => "❌",
+                        _            => "⏳"
+                    };
+
+                    <div class="admin-card" style="margin-bottom: 16px; padding: 24px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
+                            <div>
+                                <h3 style="margin: 0; color: #111827;">@booking.ServiceType</h3>
+                                <p style="margin: 4px 0 0; color: #6B7280; font-size: 13px;">
+                                    Booked on @booking.CreatedAt.ToString("dd MMM yyyy")
+                                </p>
+                            </div>
+                            <span style="background: @statusBg; color: @statusColor; padding: 6px 14px; border-radius: 50px; font-size: 13px; font-weight: 600;">
+                                @statusEmoji @booking.Status
+                            </span>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <div>
+                                <p style="margin: 0; color: #6B7280; font-size: 12px;">PREFERRED DATE</p>
+                                <p style="margin: 4px 0 0; color: #111827; font-weight: 600;">@booking.PreferredDate.ToString("dd MMM yyyy")</p>
+                            </div>
+                            <div>
+                                <p style="margin: 0; color: #6B7280; font-size: 12px;">ADDRESS</p>
+                                <p style="margin: 4px 0 0; color: #111827; font-weight: 600;">@booking.Address</p>
+                            </div>
+                            @if (!string.IsNullOrEmpty(booking.Notes))
+                            {
+                                <div style="grid-column: span 2;">
+                                    <p style="margin: 0; color: #6B7280; font-size: 12px;">NOTES</p>
+                                    <p style="margin: 4px 0 0; color: #111827;">@booking.Notes</p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+
+                <div style="text-align: center; margin-top: 24px;">
+                    <p style="color: #6B7280;">Need help? Contact us on 
+                        <a href="https://wa.me/918825048116" style="color: #E07B39; font-weight: 600;">WhatsApp</a>
+                    </p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
