@@ -185,3 +185,5 @@ D:\mvc\WularItech solutions\obj\Debug\net8.0\refint\WularItech solutions.dll
 D:\mvc\WularItech solutions\obj\Debug\net8.0\WularItech solutions.pdb
 D:\mvc\WularItech solutions\obj\Debug\net8.0\WularItech solutions.genruntimeconfig.cache
 D:\mvc\WularItech solutions\obj\Debug\net8.0\ref\WularItech solutions.dll
+D:\mvc\WularItech solutions\bin\Debug\net8.0\BouncyCastle.Crypto.dll
+D:\mvc\WularItech solutions\bin\Debug\net8.0\Razorpay.dll
