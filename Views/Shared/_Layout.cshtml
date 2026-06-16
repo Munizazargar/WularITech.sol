@@ -37,19 +37,16 @@
 
 
             <div class="navbar-right">
-                <ul class="nav-links">
-                    <li><a href="/" class="nav-link active">Home</a></li>
-                    <li><a href="/Product/index" class="nav-link">Product</a></li>
-                    <li><a href="/Services" class="nav-link">Services</a></li>
-                    <li><a href="/Contact" class="nav-link">Contact</a></li>
-                    <li><a href="/Booking/Create" class="nav-link">Book Service</a></li>
-                    <li><a href="/Booking/Track" class="nav-link">Track Booking</a></li>
-                    <li><a href="/Home/Pricing" class="nav-link">Pricing</a></li>
-                    @if (!string.IsNullOrEmpty(Context.Request.Cookies["jwt"]))
-                    {
-                        <li><a href="/Admin" class="nav-link">Admin</a></li>
-                    }
-                </ul>
+             <ul class="nav-links">
+    <li><a href="/" class="nav-link active">Home</a></li>
+    <li><a href="/Services" class="nav-link">Services</a></li>
+    <li><a href="/Booking/Create" class="nav-link">Book Service</a></li>
+    <li><a href="/Booking/Track" class="nav-link">Track Booking</a></li>
+    @if (!string.IsNullOrEmpty(Context.Request.Cookies["jwt"]))
+    {
+        <li><a href="/Admin" class="nav-link">Admin</a></li>
+    }
+</ul>
 
                 @{
                     var token = Context.Request.Cookies["jwt"];
@@ -117,16 +114,17 @@
 
             <div class="footer-links">
 
-                <div class="footer-column reveal reveal-delay-1">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="/#about">About Us</a></li>
-                        <li><a href="/Services">Services</a></li>
-                        <li><a href="/Contact">Contact</a></li>
-                        <li><a href="/Home/Pricing">Pricing</a></li>
-                        
-                    </ul>
-                </div>
+               <div class="footer-column reveal reveal-delay-1">
+    <h4>Company</h4>
+    <ul>
+        <li><a href="/#about">About Us</a></li>
+        <li><a href="/Services">Services</a></li>
+        <li><a href="/Contact">Contact</a></li>
+        <li><a href="/Home/Pricing">Pricing</a></li>
+        <li><a href="/Product/index">Products</a></li>
+        <li><a href="/Booking/Track">Track Booking</a></li>
+    </ul>
+</div>
 
                 <div class="footer-column reveal reveal-delay-2">
                     <h4>Products</h4>

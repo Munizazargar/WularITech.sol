@@ -1,0 +1,53 @@
+/* =====================================
+   FOOTER SERVICE AREA
+===================================== */
+
+.footer-service-area[b-mewdooflyu] {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+}
+
+.footer-area-title[b-mewdooflyu] {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+.footer-locations[b-mewdooflyu] {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.footer-locations span[b-mewdooflyu] {
+    background: rgba(224,123,57,0.15);
+    border: 1px solid rgba(224,123,57,0.25);
+    color: #E07B39;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+
+.footer-locations span:hover[b-mewdooflyu] {
+    background: #E07B39;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+    .footer-locations[b-mewdooflyu] {
+        gap: 8px;
+    }
+
+    .footer-locations span[b-mewdooflyu] {
+        font-size: 12px;
+        padding: 7px 12px;
+    }
+}
