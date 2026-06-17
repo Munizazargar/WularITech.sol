@@ -4,27 +4,19 @@
 
 <head>
     <link rel="stylesheet" href="/css/site.css" asp-append-version="true" />
-    
-     
     <style>
-        /* ===============================
-           SCROLL REVEAL EFFECT
-        =============================== */
         .reveal {
             opacity: 0;
             transform: translateY(60px);
             transition: all 0.9s ease;
         }
-
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
-
         .reveal-delay-1 { transition-delay: 0.2s; }
         .reveal-delay-2 { transition-delay: 0.4s; }
         .reveal-delay-3 { transition-delay: 0.6s; }
-
         .section-title::after {
             content: "";
             display: block;
@@ -36,315 +28,456 @@
             transform: scaleX(0);
             transition: transform 0.6s ease;
         }
-
         .section-title.active::after {
             transform: scaleX(1);
+        }
+
+        /* ── Service Categories ── */
+        .services-section {
+            padding: 80px 24px;
+            background: var(--bg-light);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .service-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 28px 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+        .service-card:hover {
+            border-color: var(--primary-orange);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .service-card-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+        .service-card-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+        .service-card-price {
+            font-size: 12px;
+            color: var(--primary-orange);
+            font-weight: 600;
+        }
+
+        /* ── How It Works ── */
+        .how-section {
+            padding: 80px 24px;
+            background: var(--bg-white);
+        }
+        .how-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .how-step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-orange);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0 auto 16px;
+        }
+        .how-step-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+        .how-step-desc {
+            font-size: 14px;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* ── For Business Banner ── */
+        .business-banner {
+            background: var(--dark-navy);
+            padding: 60px 24px;
+            text-align: center;
+        }
+        .business-banner h2 {
+            font-family: var(--font-serif);
+            font-size: 36px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .business-banner p {
+            color: rgba(255,255,255,0.6);
+            font-size: 16px;
+            max-width: 520px;
+            margin: 0 auto 32px;
+        }
+        .business-banner-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Mobile fixes */
+        @@media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .how-steps {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .business-banner h2 {
+                font-size: 26px;
+            }
+        }
+        @@media (max-width: 480px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
         }
     </style>
 </head>
 
-<!-- ================= HERO SECTION ================= -->
+<!-- ================= HERO ================= -->
 <section class="hero reveal">
     <div class="hero-container">
-
         <div class="hero-content">
             <div class="hero-badge reveal reveal-delay-1">
-                <span>#1 Tech Solution in Srinagar</span>
+                <span>Kashmir's #1 Service Booking Platform</span>
             </div>
 
             <h1 class="hero-title reveal reveal-delay-2">
-                Secure Your World<br />
-                with <span class="text-orange">Wular i Tech</span>
+                Book Any Service<br />
+                Across <span class="text-orange">Kashmir</span>
             </h1>
 
             <p class="hero-description reveal reveal-delay-3">
-                Premium camera installations, high-grade electrical wires, and expert 
-                technical services right at your doorstep in Kashmir.
+                From CCTV installation to electrical wiring — book verified technicians
+                at your doorstep in minutes. Serving all districts of Kashmir.
             </p>
 
-        
-
             <div class="hero-buttons reveal reveal-delay-3">
-                <a href="/Product" class="btn-primary">Shop Product</a>
-                <a href="/Services" class="btn-secondary">Our Services</a>
+                <a href="/Booking/Create" class="btn-primary">Book a Service</a>
+                <a href="/Booking/Track" class="btn-secondary">Track Booking</a>
             </div>
         </div>
 
-        
-
-        <!-- HERO IMAGE RESTORED -->
         <div class="hero-image reveal reveal-delay-2">
-            <img src="~/images/cctv.jpg" alt="Security Cameras" style="max-width:100%; border-radius:16px;" />
-
+            <img src="~/images/cctv.jpg" alt="Service Booking Kashmir" style="max-width:100%; border-radius:16px;" />
             <div class="trust-badge">
                 <div class="trust-content">
-                    <h4>Trusted Service</h4>
-                    <span style="color:#E07B39;">100% Satisfaction</span>
+                    <h4>Trusted Platform</h4>
+                    <span style="color:#E07B39;">150+ Happy Customers</span>
                     <p style="color:#6B7280; font-size:14px;">
-                        Expert technicians available throughout Srinagar.
+                        Verified technicians across all Kashmir districts.
                     </p>
                 </div>
             </div>
         </div>
+    </div>
+</section>
 
+<!-- ================= SERVICE CATEGORIES ================= -->
+<section class="services-section">
+    <div class="container">
+        <h2 class="section-title reveal" style="margin-bottom: 12px;">What Do You Need?</h2>
+        <p class="section-subtitle reveal reveal-delay-1">
+            Choose a service and book a verified technician in minutes
+        </p>
+
+        <div class="services-grid">
+            <a href="/Booking/Create" class="service-card reveal reveal-delay-1">
+                <div class="service-card-icon">📷</div>
+                <div class="service-card-title">CCTV Installation</div>
+                <div class="service-card-price">From ₹1,500</div>
+            </a>
+            <a href="/Booking/Create" class="service-card reveal reveal-delay-1">
+                <div class="service-card-icon">🔧</div>
+                <div class="service-card-title">CCTV Repair</div>
+                <div class="service-card-price">From ₹500</div>
+            </a>
+            <a href="/Booking/Create" class="service-card reveal reveal-delay-2">
+                <div class="service-card-icon">⚡</div>
+                <div class="service-card-title">Electrical Wiring</div>
+                <div class="service-card-price">From ₹500</div>
+            </a>
+            <a href="/Booking/Create" class="service-card reveal reveal-delay-2">
+                <div class="service-card-icon">🖥️</div>
+                <div class="service-card-title">DVR/NVR Setup</div>
+                <div class="service-card-price">From ₹800</div>
+            </a>
+            <a href="/Booking/Create" class="service-card reveal reveal-delay-3">
+                <div class="service-card-icon">🌐</div>
+                <div class="service-card-title">Network Setup</div>
+                <div class="service-card-price">From ₹1,000</div>
+            </a>
+            <a href="/Booking/Create" class="service-card reveal reveal-delay-3">
+                <div class="service-card-icon">🏠</div>
+                <div class="service-card-title">Home Package</div>
+                <div class="service-card-price">From ₹8,999</div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="how-section">
+    <div class="container">
+        <h2 class="section-title reveal" style="margin-bottom: 12px;">How It Works</h2>
+        <p class="section-subtitle reveal reveal-delay-1">Book a service in 3 simple steps</p>
+
+        <div class="how-steps">
+            <div class="reveal reveal-delay-1">
+                <div class="how-step-number">1</div>
+                <div class="how-step-title">Choose Your Service</div>
+                <div class="how-step-desc">Pick from our list of services — CCTV, electrical, networking and more.</div>
+            </div>
+            <div class="reveal reveal-delay-2">
+                <div class="how-step-number">2</div>
+                <div class="how-step-title">Book Online</div>
+                <div class="how-step-desc">Fill in your details and preferred date. Takes less than 2 minutes.</div>
+            </div>
+            <div class="reveal reveal-delay-3">
+                <div class="how-step-number">3</div>
+                <div class="how-step-title">Technician Arrives</div>
+                <div class="how-step-desc">A verified technician shows up at your door on the scheduled date.</div>
+            </div>
+        </div>
     </div>
 </section>
 
 <!-- ================= ABOUT SECTION ================= -->
-
 <section id="about" class="about-section reveal">
-  <div class="container">
-    <div class="about-grid">
+    <div class="container">
+        <div class="about-grid">
+            <div class="reveal reveal-delay-1">
+                <span class="about-badge">About the Platform</span>
+                <h2 class="about-title">
+                    Kashmir's Most Trusted<br/>
+                    <span class="text-orange">Service Booking Platform</span>
+                </h2>
+                <p class="about-desc">
+                    A one-stop service booking platform built for the people of Kashmir.
+                    Whether you need a CCTV camera installed, your electrical wiring checked, or an
+                    ongoing maintenance plan — book it all in minutes.
+                </p>
+                <p class="about-desc">
+                    We connect you with verified, skilled technicians across the Valley — offering the
+                    most affordable rates without compromising on quality. No middlemen, no delays,
+                    just reliable service at your doorstep.
+                </p>
+                <div class="about-pills">
+                    <span class="about-pill">✔ CCTV Installation</span>
+                    <span class="about-pill">✔ Maintenance & Repair</span>
+                    <span class="about-pill">✔ Electrical Wiring</span>
+                    <span class="about-pill">✔ Online Booking</span>
+                    <span class="about-pill">✔ Doorstep Service</span>
+                </div>
+                <a href="/Booking/Create" class="btn-primary">Book a Service</a>
+            </div>
 
-      <!-- LEFT SIDE -->
-      <div class="reveal reveal-delay-1">
-        <span class="about-badge">About Wular i Tech</span>
-
-        <h2 class="about-title">
-          Kashmir's Most Trusted<br/>
-          <span class="text-orange">Service Booking Platform</span>
-        </h2>
-
-        <p class="about-desc">
-          Wular i Tech is a one-stop service booking platform built for the people of Kashmir. 
-          Whether you need a CCTV camera installed, your electrical wiring checked, or an 
-          ongoing maintenance plan — you can book it all through us in minutes.
-        </p>
-
-        <p class="about-desc">
-          We connect you with verified, skilled technicians across the Valley — offering the 
-          most affordable rates without compromising on quality. No middlemen, no delays, 
-          just reliable service at your doorstep.
-        </p>
-
-        <div class="about-pills">
-          <span class="about-pill">✔ CCTV Installation</span>
-          <span class="about-pill">✔ Maintenance & Repair</span>
-          <span class="about-pill">✔ Electrical Wiring</span>
-          <span class="about-pill">✔ Online Booking</span>
-          <span class="about-pill">✔ Doorstep Service</span>
+            <div class="about-features reveal reveal-delay-2">
+                <div class="about-feature-card">
+                    <div class="feat-icon">📅</div>
+                    <div>
+                        <h4 class="feat-title">Easy Online Booking</h4>
+                        <p class="feat-desc">Book any service from your phone in under 2 minutes, anytime.</p>
+                    </div>
+                </div>
+                <div class="about-feature-card">
+                    <div class="feat-icon">🛡️</div>
+                    <div>
+                        <h4 class="feat-title">Verified Technicians Only</h4>
+                        <p class="feat-desc">Every technician is background-checked and skill-verified.</p>
+                    </div>
+                </div>
+                <div class="about-feature-card">
+                    <div class="feat-icon">💰</div>
+                    <div>
+                        <h4 class="feat-title">Best Prices in the Valley</h4>
+                        <p class="feat-desc">Most competitive rates in Kashmir with zero hidden charges.</p>
+                    </div>
+                </div>
+                <div class="about-feature-card">
+                    <div class="feat-icon">⚡</div>
+                    <div>
+                        <h4 class="feat-title">Same-Day Response</h4>
+                        <p class="feat-desc">Most bookings are confirmed and scheduled within hours.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <a href="/Services" class="btn-primary">Book a Service</a>
-      </div>
-
-      <!-- RIGHT SIDE -->
-      <div class="about-features reveal reveal-delay-2">
-
-        <div class="about-feature-card">
-          <div class="feat-icon">📅</div>
-          <div>
-            <h4 class="feat-title">Easy Online Booking</h4>
-            <p class="feat-desc">Book any installation or maintenance service from your phone — in under 2 minutes, anytime.</p>
-          </div>
-        </div>
-
-        <div class="about-feature-card">
-          <div class="feat-icon">🛡️</div>
-          <div>
-            <h4 class="feat-title">Verified Technicians Only</h4>
-            <p class="feat-desc">Every technician is background-checked and skill-verified — professional and trustworthy.</p>
-          </div>
-        </div>
-
-        <div class="about-feature-card">
-          <div class="feat-icon">💰</div>
-          <div>
-            <h4 class="feat-title">Best Prices in the Valley</h4>
-            <p class="feat-desc">Most competitive rates in Kashmir with zero hidden charges. Transparent pricing always.</p>
-          </div>
-        </div>
-
-        <div class="about-feature-card">
-          <div class="feat-icon">⚡</div>
-          <div>
-            <h4 class="feat-title">Same-Day Response</h4>
-            <p class="feat-desc">Most service requests are confirmed and scheduled within hours of booking.</p>
-          </div>
-        </div>
-
-      </div>
     </div>
-  </div>
 </section>
 
-
-
-
-<!-- ===== Stats Section ===== -->
+<!-- ================= STATS ================= -->
 <section class="stats-section reveal">
-  <div class="container">
-    <h2 class="stats-title section-title reveal">By the Numbers</h2>
-    <p style="text-align:center; color:#6B7280; margin-bottom:20px;" class="reveal reveal-delay-1">
-      Our work speaks for itself — real results across Kashmir
-    </p>
-    <div class="stats-wrapper">
-      <div class="stat-card reveal reveal-delay-1">
-        <h2 class="stat-number">200+</h2>
-        <p>CCTV Cameras Installed</p>
-      </div>
-      <div class="stat-card reveal reveal-delay-2">
-        <h2 class="stat-number">150+</h2>
-        <p>Happy Clients</p>
-      </div>
-      <div class="stat-card reveal reveal-delay-3">
-        <h2 class="stat-number">80+</h2>
-        <p>Projects Completed</p>
-      </div>
-      <div class="stat-card reveal reveal-delay-3">
-        <h2 class="stat-number">4.9★</h2>
-        <p>Average Client Rating</p>
-      </div>
+    <div class="container">
+        <h2 class="stats-title section-title reveal">By the Numbers</h2>
+        <p style="text-align:center; color:#6B7280; margin-bottom:20px;" class="reveal reveal-delay-1">
+            Real results across Kashmir
+        </p>
+        <div class="stats-wrapper">
+            <div class="stat-card reveal reveal-delay-1">
+                <h2 class="stat-number">200+</h2>
+                <p>Services Completed</p>
+            </div>
+            <div class="stat-card reveal reveal-delay-2">
+                <h2 class="stat-number">150+</h2>
+                <p>Happy Customers</p>
+            </div>
+            <div class="stat-card reveal reveal-delay-3">
+                <h2 class="stat-number">11</h2>
+                <p>Districts Covered</p>
+            </div>
+            <div class="stat-card reveal reveal-delay-3">
+                <h2 class="stat-number">4.9★</h2>
+                <p>Average Rating</p>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
-<!-- ===== About Us Section ===== -->
-
-
-
+<!-- ================= FOR BUSINESS BANNER ================= -->
+<section class="business-banner reveal">
+    <div class="container">
+        <h2>Are You a Service Provider?</h2>
+        <p>
+            Join Kashmir's fastest growing service platform. List your business,
+            get bookings, and grow your customer base across the Valley.
+        </p>
+        <div class="business-banner-btns">
+            <a href="/Contact" class="btn-book" style="padding: 14px 28px;">
+                Get Listed →
+            </a>
+            <a href="/Home/Pricing" class="btn-secondary"
+               style="padding: 14px 28px; border-color: rgba(255,255,255,0.3); color: #fff; background: transparent;">
+                View Pricing
+            </a>
+        </div>
+    </div>
+</section>
 
 <!-- ================= TESTIMONIALS ================= -->
 <section class="testimonials reveal">
     <div class="container">
-
-       <h2 class="section-title reveal"
-    style="font-size:42px;font-weight:700;text-align:center;color:#1A1A2E;margin-bottom:12px;">
-    What Our Clients Say
-</h2>
-
+        <h2 class="section-title reveal"
+            style="font-size:42px;font-weight:700;text-align:center;color:#1A1A2E;margin-bottom:12px;">
+            What Our Clients Say
+        </h2>
         <div style="width:70px;height:4px;background:#E07B39;margin:14px auto 25px;border-radius:999px;"></div>
-
-<p class="section-subtitle reveal reveal-delay-1"
-   style="max-width:700px;margin:0 auto 50px;text-align:center;font-size:17px;line-height:1.8;color:#6B7280;">
-    We take pride in delivering top-notch tech solutions across Kashmir
-</p>
-
+        <p class="section-subtitle reveal reveal-delay-1"
+           style="max-width:700px;margin:0 auto 50px;text-align:center;font-size:17px;line-height:1.8;color:#6B7280;">
+            We take pride in delivering top-notch services across Kashmir
+        </p>
         <div class="stats-wrapper">
-
             <div class="stat-card reveal reveal-delay-1">
                 <p style="font-style:italic; margin-bottom:20px;">
-                    "Wular i Tech installed our CCTV system flawlessly. The team was professional and completed the work on time."
+                    "Booked a CCTV installation online and the technician arrived the next day. Flawless experience!"
                 </p>
-
                 <h4>Aamir Khan</h4>
-                <span class="text-orange">Homeowner</span>
+                <span class="text-orange">Homeowner, Srinagar</span>
             </div>
-
             <div class="stat-card reveal reveal-delay-2">
                 <p style="font-style:italic; margin-bottom:20px;">
-                    "Excellent electrical wiring service with transparent pricing. Highly recommended for homes and businesses."
+                    "Excellent electrical wiring service with transparent pricing. Highly recommended."
                 </p>
-
                 <h4>Fatima Wani</h4>
-                <span class="text-orange">Business Owner</span>
+                <span class="text-orange">Business Owner, Baramulla</span>
             </div>
-
             <div class="stat-card reveal reveal-delay-3">
                 <p style="font-style:italic; margin-bottom:20px;">
-                    "The CCTV footage quality is outstanding and remote access works perfectly. Great support from the team."
+                    "The booking process was so easy. Got confirmation email instantly. Great platform!"
                 </p>
-
                 <h4>Rohit Singh</h4>
-                <span class="text-orange">Shop Owner</span>
+                <span class="text-orange">Shop Owner, Sopore</span>
             </div>
-
         </div>
-
     </div>
 </section>
 
 <!-- ================= OUR WORK ================= -->
 <section class="our-work reveal" style="padding:80px 24px; background:#ffffff; text-align:center;">
     <div class="container">
-
         <h2 class="section-title reveal">Our Work</h2>
         <p class="section-subtitle reveal reveal-delay-1" style="color:#6B7280; margin-bottom:40px;">
-            Some of the projects we've successfully completed
+            Some of the projects we've successfully completed across Kashmir
         </p>
-
         <div class="work-cards" style="display:flex; flex-wrap:wrap; gap:24px; justify-content:center;">
-
-            <!-- CARD 1 -->
             <div class="work-card reveal reveal-delay-1" style="perspective:1000px;">
                 <div class="work-card-inner">
-                    
                     <div class="work-card-front">
                         <img src="~/images/ouw.jpg" alt="Project 1">
                         <h4>Office CCTV Installation</h4>
                     </div>
-
                     <div class="work-card-back">
-                        <p>
-                            Complete surveillance setup for a commercial office including cameras and structured wiring.
-                        </p>
+                        <p>Complete surveillance setup for a commercial office including cameras and structured wiring.</p>
                     </div>
-
                 </div>
             </div>
-
-            <!-- CARD 2 -->
             <div class="work-card reveal reveal-delay-2" style="perspective:1000px;">
                 <div class="work-card-inner">
-                    
                     <div class="work-card-front">
                         <img src="~/images/hsi.jpg" alt="Project 2">
                         <h4>Home Security Setup</h4>
                     </div>
-
                     <div class="work-card-back">
-                        <p>
-                            High-quality home security installation with remote monitoring system.
-                        </p>
+                        <p>High-quality home security installation with remote monitoring system.</p>
                     </div>
-
                 </div>
             </div>
-
-            <!-- CARD 3 -->
             <div class="work-card reveal reveal-delay-3" style="perspective:1000px;">
                 <div class="work-card-inner">
-                    
                     <div class="work-card-front">
                         <img src="~/images/images.jpg" alt="Project 3">
                         <h4>Electrical Wiring Upgrade</h4>
                     </div>
-
                     <div class="work-card-back">
-                        <p>
-                            Rewiring and electrical system upgrade for residential complex.
-                        </p>
+                        <p>Rewiring and electrical system upgrade for residential complex.</p>
                     </div>
-
                 </div>
             </div>
-
         </div>
-
     </div>
 </section>
 
 <script>
     function revealOnScroll() {
         const reveals = document.querySelectorAll(".reveal");
-
         reveals.forEach((element) => {
             const windowHeight = window.innerHeight;
             const elementTop = element.getBoundingClientRect().top;
-            const revealPoint = 100;
-
-            if (elementTop < windowHeight - revealPoint && elementTop > -100) {
+            if (elementTop < windowHeight - 100 && elementTop > -100) {
                 element.classList.add("active");
             } else {
-                element.classList.remove("active"); // <-- THIS enables reverse animation
+                element.classList.remove("active");
             }
         });
     }
-
     window.addEventListener("scroll", revealOnScroll);
     window.addEventListener("load", revealOnScroll);
 </script>
-
-
-
-
