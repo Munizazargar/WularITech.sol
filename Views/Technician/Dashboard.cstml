@@ -1,0 +1,130 @@
+@model List<WularItech_solutions.Models.Booking>
+
+@{
+    ViewData["Title"] = "Technician Dashboard";
+    var myJobs = ViewBag.MyJobs as List<WularItech_solutions.Models.Booking>;
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin.css" />
+}
+
+<div class="booking-page">
+    <div class="booking-container" style="max-width: 1000px;">
+        <div class="booking-header">
+            <h1>Welcome, @ViewBag.TechnicianName 👋</h1>
+            <p>Pick up available jobs and manage your assigned work.</p>
+        </div>
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="admin-alert admin-alert--success">@TempData["Success"]</div>
+        }
+        @if (TempData["Error"] != null)
+        {
+            <div class="admin-alert admin-alert--error">@TempData["Error"]</div>
+        }
+
+        <!-- My Accepted Jobs -->
+        <div class="admin-card">
+            <div class="admin-card-header">
+                <h2>My Jobs (@(myJobs?.Count ?? 0))</h2>
+            </div>
+
+            @if (myJobs != null && myJobs.Any())
+            {
+                <div class="admin-table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Service</th>
+                                <th>Customer</th>
+                                <th>Date</th>
+                                <th>Address</th>
+                                <th>Status</th>
+                                <th>Update</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var job in myJobs)
+                            {
+                                <tr>
+                                    <td><strong>@job.ServiceType</strong></td>
+                                    <td>@job.CustomerName<br /><small class="admin-sub">@job.CustomerPhone</small></td>
+                                    <td>@job.PreferredDate.ToString("dd MMM yyyy")</td>
+                                    <td class="admin-address">@job.Address</td>
+                                    <td><span class="status-badge status-@job.Status.ToLower()">@job.Status</span></td>
+                                    <td>
+                                        <form asp-action="UpdateJobStatus" method="post" style="display:flex; gap:4px;">
+                                            <input type="hidden" name="bookingId" value="@job.BookingId" />
+                                            <select name="status" class="admin-select">
+                                                <option value="Confirmed" selected="@(job.Status == "Confirmed")">Confirmed</option>
+                                                <option value="InProgress" selected="@(job.Status == "InProgress")">In Progress</option>
+                                                <option value="Completed" selected="@(job.Status == "Completed")">Completed</option>
+                                            </select>
+                                            <button type="submit" class="btn-admin-edit">Update</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <p class="admin-empty">No jobs accepted yet. Pick one from the available jobs below.</p>
+            }
+        </div>
+
+        <!-- Available Jobs Pool -->
+        <div class="admin-card">
+            <div class="admin-card-header">
+                <h2>Available Jobs (@Model.Count)</h2>
+            </div>
+
+            @if (Model.Any())
+            {
+                <div class="admin-table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Service</th>
+                                <th>Customer</th>
+                                <th>Date</th>
+                                <th>Address</th>
+                                <th>Notes</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var job in Model)
+                            {
+                                <tr>
+                                    <td><strong>@job.ServiceType</strong></td>
+                                    <td>@job.CustomerName</td>
+                                    <td>@job.PreferredDate.ToString("dd MMM yyyy")</td>
+                                    <td class="admin-address">@job.Address</td>
+                                    <td class="admin-message">@(string.IsNullOrEmpty(job.Notes) ? "—" : job.Notes)</td>
+                                    <td>
+                                        <form asp-action="AcceptJob" method="post"
+                                              onsubmit="return confirm('Accept this job?');">
+                                            <input type="hidden" name="bookingId" value="@job.BookingId" />
+                                            <button type="submit" class="btn-admin-primary" style="padding:6px 14px; font-size:12px;">
+                                                Accept Job
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <p class="admin-empty">No available jobs right now. Check back soon.</p>
+            }
+        </div>
+    </div>
+</div>
