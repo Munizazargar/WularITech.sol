@@ -6,6 +6,111 @@
 
 @section Styles {
     <link rel="stylesheet" href="~/css/admin.css" />
+    <style>
+        /* ── Progress Bar ── */
+        .progress-track {
+            display: flex;
+            align-items: center;
+            margin: 20px 0 8px;
+            position: relative;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-dot {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid #E5E7EB;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            color: #9CA3AF;
+            transition: all 0.3s ease;
+            margin-bottom: 8px;
+        }
+
+        .progress-dot.active {
+            background: #E07B39;
+            border-color: #E07B39;
+            color: #fff;
+        }
+
+        .progress-dot.done {
+            background: #16A34A;
+            border-color: #16A34A;
+            color: #fff;
+        }
+
+        .progress-dot.cancelled {
+            background: #DC2626;
+            border-color: #DC2626;
+            color: #fff;
+        }
+
+        .progress-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #9CA3AF;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .progress-label.active {
+            color: #E07B39;
+        }
+
+        .progress-label.done {
+            color: #16A34A;
+        }
+
+        .progress-label.cancelled {
+            color: #DC2626;
+        }
+
+        /* Line between steps */
+        .progress-line {
+            flex: 1;
+            height: 2px;
+            background: #E5E7EB;
+            margin-bottom: 26px;
+            position: relative;
+        }
+
+        .progress-line.filled {
+            background: #16A34A;
+        }
+
+        .progress-line.active {
+            background: linear-gradient(to right, #16A34A, #E07B39);
+        }
+
+        /* Cancelled state — whole bar red tint */
+        .progress-track.cancelled-track .progress-line {
+            background: #FEE2E2;
+        }
+
+        @@media (max-width: 480px) {
+            .progress-label {
+                font-size: 9px;
+            }
+            .progress-dot {
+                width: 26px;
+                height: 26px;
+                font-size: 11px;
+            }
+        }
+    </style>
 }
 
 <div class="booking-page">
@@ -37,7 +142,7 @@
         @if (Model != null && Model.Any())
         {
             <div style="margin-top: 32px;">
-                <h2 style="color: #111827; margin-bottom: 16px;">Your Bookings (@Model.Count)</h2>
+                <h2 style="color: var(--text-dark, #111827); margin-bottom: 16px;">Your Bookings (@Model.Count)</h2>
 
                 @foreach (var booking in Model)
                 {
@@ -68,10 +173,24 @@
                         _            => "⏳"
                     };
 
-                    <div class="admin-card" style="margin-bottom: 16px; padding: 24px;">
+                    // Progress step index: 0=Pending, 1=Confirmed, 2=InProgress, 3=Completed
+                    var stepIndex = booking.Status switch
+                    {
+                        "Confirmed"  => 1,
+                        "InProgress" => 2,
+                        "Completed"  => 3,
+                        "Cancelled"  => -1,
+                        _            => 0
+                    };
+
+                    var isCancelled = booking.Status == "Cancelled";
+
+                    <div class="admin-card" style="margin-bottom: 20px; padding: 24px;">
+
+                        <!-- Header -->
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
                             <div>
-                                <h3 style="margin: 0; color: #111827;">@booking.ServiceType</h3>
+                                <h3 style="margin: 0; color: var(--text-dark, #111827);">@booking.ServiceType</h3>
                                 <p style="margin: 4px 0 0; color: #6B7280; font-size: 13px;">
                                     Booked on @booking.CreatedAt.ToString("dd MMM yyyy")
                                 </p>
@@ -81,28 +200,85 @@
                             </span>
                         </div>
 
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                        <!-- Progress Bar -->
+                        @if (!isCancelled)
+                        {
+                            <div class="progress-track">
+                                <!-- Step 0: Pending -->
+                                <div class="progress-step">
+                                    <div class="progress-dot @(stepIndex >= 0 ? (stepIndex > 0 ? "done" : "active") : "")">
+                                        @(stepIndex > 0 ? "✓" : "1")
+                                    </div>
+                                    <span class="progress-label @(stepIndex >= 0 ? (stepIndex > 0 ? "done" : "active") : "")">Pending</span>
+                                </div>
+
+                                <div class="progress-line @(stepIndex > 0 ? "filled" : "")"></div>
+
+                                <!-- Step 1: Confirmed -->
+                                <div class="progress-step">
+                                    <div class="progress-dot @(stepIndex >= 1 ? (stepIndex > 1 ? "done" : "active") : "")">
+                                        @(stepIndex > 1 ? "✓" : "2")
+                                    </div>
+                                    <span class="progress-label @(stepIndex >= 1 ? (stepIndex > 1 ? "done" : "active") : "")">Confirmed</span>
+                                </div>
+
+                                <div class="progress-line @(stepIndex > 1 ? "filled" : stepIndex == 1 ? "active" : "")"></div>
+
+                                <!-- Step 2: In Progress -->
+                                <div class="progress-step">
+                                    <div class="progress-dot @(stepIndex >= 2 ? (stepIndex > 2 ? "done" : "active") : "")">
+                                        @(stepIndex > 2 ? "✓" : "3")
+                                    </div>
+                                    <span class="progress-label @(stepIndex >= 2 ? (stepIndex > 2 ? "done" : "active") : "")">In Progress</span>
+                                </div>
+
+                                <div class="progress-line @(stepIndex > 2 ? "filled" : stepIndex == 2 ? "active" : "")"></div>
+
+                                <!-- Step 3: Completed -->
+                                <div class="progress-step">
+                                    <div class="progress-dot @(stepIndex >= 3 ? "done" : "")">
+                                        @(stepIndex >= 3 ? "✓" : "4")
+                                    </div>
+                                    <span class="progress-label @(stepIndex >= 3 ? "done" : "")">Completed</span>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <!-- Cancelled message -->
+                            <div style="background: #FEF2F2; border: 1px solid #FECACA; border-radius: 10px; padding: 14px 18px; margin: 16px 0; display: flex; align-items: center; gap: 10px;">
+                                <span style="font-size: 20px;">❌</span>
+                                <div>
+                                    <p style="margin: 0; color: #991b1b; font-weight: 600; font-size: 14px;">Booking Cancelled</p>
+                                    <p style="margin: 4px 0 0; color: #B91C1C; font-size: 13px;">Please contact us on WhatsApp to reschedule.</p>
+                                </div>
+                            </div>
+                        }
+
+                        <!-- Booking Details -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px;">
                             <div>
                                 <p style="margin: 0; color: #6B7280; font-size: 12px;">PREFERRED DATE</p>
-                                <p style="margin: 4px 0 0; color: #111827; font-weight: 600;">@booking.PreferredDate.ToString("dd MMM yyyy")</p>
+                                <p style="margin: 4px 0 0; color: var(--text-dark, #111827); font-weight: 600;">@booking.PreferredDate.ToString("dd MMM yyyy")</p>
                             </div>
                             <div>
                                 <p style="margin: 0; color: #6B7280; font-size: 12px;">ADDRESS</p>
-                                <p style="margin: 4px 0 0; color: #111827; font-weight: 600;">@booking.Address</p>
+                                <p style="margin: 4px 0 0; color: var(--text-dark, #111827); font-weight: 600;">@booking.Address</p>
                             </div>
                             @if (!string.IsNullOrEmpty(booking.Notes))
                             {
                                 <div style="grid-column: span 2;">
                                     <p style="margin: 0; color: #6B7280; font-size: 12px;">NOTES</p>
-                                    <p style="margin: 4px 0 0; color: #111827;">@booking.Notes</p>
+                                    <p style="margin: 4px 0 0; color: var(--text-dark, #111827);">@booking.Notes</p>
                                 </div>
                             }
                         </div>
+
                     </div>
                 }
 
                 <div style="text-align: center; margin-top: 24px;">
-                    <p style="color: #6B7280;">Need help? Contact us on 
+                    <p style="color: #6B7280;">Need help? Contact us on
                         <a href="https://wa.me/918825048116" style="color: #E07B39; font-weight: 600;">WhatsApp</a>
                     </p>
                 </div>
