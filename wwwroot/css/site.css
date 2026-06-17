@@ -1018,10 +1018,13 @@ body.dark-mode .feat-desc {
 /* ============================================
    AUTH PAGES (Login & Register)
    ============================================ */
-
 .auth-section {
     min-height: calc(100vh - 80px);
     padding: 40px 20px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
 }
 
 .auth-container {
