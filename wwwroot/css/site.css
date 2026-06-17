@@ -194,6 +194,25 @@ img {
     width: 100%;
 }
 
+
+
+
+/* ========================================
+   GLOBAL NAVBAR CLEARANCE (single source of truth)
+   ======================================== */
+
+main {
+    padding-top: 72px;
+}
+
+@media (max-width: 768px) {
+    main {
+        padding-top: 64px;
+    }
+}
+
+
+
 /* Auth Buttons */
 .auth-buttons {
     display: flex;
@@ -346,9 +365,8 @@ body.dark-mode .hamburger span {
    ======================================== */
 
 .hero {
-    padding-top: 120px;
+    padding-top: 48px;
     padding-bottom: 80px;
-    background-color: var(--bg-white);
 }
 
 .hero-container {
@@ -1003,9 +1021,7 @@ body.dark-mode .feat-desc {
 
 .auth-section {
     min-height: calc(100vh - 80px);
-    margin-top: 72px; /* was 100px */
     padding: 40px 20px 60px;
-
 }
 
 .auth-container {
@@ -1523,7 +1539,7 @@ body.dark-mode .feat-desc {
 
     /* Hero */
     .hero {
-        padding-top: 100px;
+        padding-top: 36px; 
         padding-bottom: 60px;
     }
 
@@ -1611,10 +1627,8 @@ body.dark-mode .feat-desc {
 
   /* Auth */
 .auth-section {
-    margin-top: 64px;
     padding: 20px 16px 40px;
 }
-
 .auth-container {
     grid-template-columns: 1fr;
     max-width: 100%;
