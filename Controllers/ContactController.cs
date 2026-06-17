@@ -5,12 +5,12 @@ namespace WularItech_solutions.Controllers
 {
     public class ContactController : Controller
     {
-       private readonly SqlDbContext dbContext;
+        private readonly SqlDbContext dbContext;
 
-       public ContactController(SqlDbContext dbContext)
-       {
-        this.dbContext=dbContext;
-       }
+        public ContactController(SqlDbContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
 
         [HttpGet]
         public IActionResult Index()
@@ -19,18 +19,20 @@ namespace WularItech_solutions.Controllers
         }
 
         [HttpPost]
-       
-        public IActionResult Index(Contact contact)
+        public async Task<IActionResult> Index(Contact contact)
         {
             if (!ModelState.IsValid)
             {
-                // Validation failed, show errors
                 return View(contact);
             }
-              TempData["SuccessMessage"] = "✅ Your message has been sent successfully!";
 
-    return RedirectToAction("Index");
-           
+            contact.CreatedAt = DateTime.Now;
+
+            dbContext.Contacts.Add(contact);
+            await dbContext.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "✅ Your message has been sent successfully!";
+            return RedirectToAction("Index");
         }
     }
 }
