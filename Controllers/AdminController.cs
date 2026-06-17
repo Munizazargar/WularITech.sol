@@ -140,101 +140,115 @@ namespace WularItech_solutions.Controllers
 
        
         [HttpPost]
-        public async Task<IActionResult> UpdateBookingStatus(Guid id, string status)
+public async Task<IActionResult> UpdateBookingStatus(Guid id, string status)
+{
+    if (!IsAdmin()) return RedirectToAction("Login", "Account");
+
+    var booking = await _db.Bookings.FindAsync(id);
+    if (booking == null) return NotFound();
+
+    booking.Status = status;
+    await _db.SaveChangesAsync();
+
+    Console.WriteLine($"DEBUG → Email: '{booking.CustomerEmail}' | Name: '{booking.CustomerName}' | Service: '{booking.ServiceType}' | Address: '{booking.Address}' | Date: '{booking.PreferredDate}' | Notes: '{booking.Notes}'");
+
+    _ = Task.Run(async () =>
+    {
+        try
         {
-            if (!IsAdmin()) return RedirectToAction("Login", "Account");
-
-            var booking = await _db.Bookings.FindAsync(id);
-            if (booking == null) return NotFound();
-
-            booking.Status = status;
-
-            
-            await _db.SaveChangesAsync();
-            // Add this debug line temporarily
-            Console.WriteLine($"DEBUG → Email: '{booking.CustomerEmail}' | Name: '{booking.CustomerName}' | Service: '{booking.ServiceType}' | Address: '{booking.Address}'");
-
-
-            try
+            var statusColor = status switch
             {
-                var statusColor = status switch
-                {
-                    "Confirmed" => "#065f46",
-                    "InProgress" => "#1e40af",
-                    "Completed" => "#5b21b6",
-                    "Cancelled" => "#991b1b",
-                    _ => "#92400E"
-                };
+                "Confirmed"  => "#065f46",
+                "InProgress" => "#1e40af",
+                "Completed"  => "#5b21b6",
+                "Cancelled"  => "#991b1b",
+                _            => "#92400E"
+            };
 
-                var statusBg = status switch
-                {
-                    "Confirmed" => "#d1fae5",
-                    "InProgress" => "#dbeafe",
-                    "Completed" => "#ede9fe",
-                    "Cancelled" => "#fee2e2",
-                    _ => "#FEF3C7"
-                };
+            var statusBg = status switch
+            {
+                "Confirmed"  => "#d1fae5",
+                "InProgress" => "#dbeafe",
+                "Completed"  => "#ede9fe",
+                "Cancelled"  => "#fee2e2",
+                _            => "#FEF3C7"
+            };
 
-                var statusEmoji = status switch
-                {
-                    "Confirmed" => "✅",
-                    "InProgress" => "🔧",
-                    "Completed" => "🎉",
-                    "Cancelled" => "❌",
-                    _ => "🔔"
-                };
+            var statusEmoji = status switch
+            {
+                "Confirmed"  => "✅",
+                "InProgress" => "🔧",
+                "Completed"  => "🎉",
+                "Cancelled"  => "❌",
+                _            => "🔔"
+            };
 
-                var statusMessage = status switch
-                {
-                    "Confirmed" => "Great news! Your booking has been confirmed. Our technician will arrive on the scheduled date.",
-                    "InProgress" => "Our technician is currently on the way and working on your service request.",
-                    "Completed" => "Your service has been completed successfully. Thank you for choosing WularTech Solutions!",
-                    "Cancelled" => "Unfortunately your booking has been cancelled. Please contact us to reschedule.",
-                    _ => "Your booking status has been updated."
-                };
+            var statusMessage = status switch
+            {
+                "Confirmed"  => "Great news! Your booking has been confirmed. Our technician will arrive on the scheduled date.",
+                "InProgress" => "Our technician is currently on the way and working on your service request.",
+                "Completed"  => "Your service has been completed successfully. Thank you for choosing WularTech Solutions!",
+                "Cancelled"  => "Unfortunately your booking has been cancelled. Please contact us to reschedule.",
+                _            => "Your booking status has been updated."
+            };
 
-                var subject = $"Booking Update: {status} {statusEmoji} - WularTech Solutions";
+            // Safe values — no nulls
+            var customerName  = booking.CustomerName  ?? "Customer";
+            var serviceType   = booking.ServiceType   ?? "Service";
+            var address       = booking.Address       ?? "N/A";
+            var notes         = booking.Notes         ?? "";
+            var preferredDate = booking.PreferredDate != default
+                                ? booking.PreferredDate.ToString("dd MMM yyyy")
+                                : "To be confirmed";
 
-                var body = $@"
-            <div style='font-family: Inter, sans-serif; max-width: 600px; margin: 0 auto;'>
-                <div style='background: #1A1A2E; padding: 24px; border-radius: 12px 12px 0 0;'>
-                    <h1 style='color: #E07B39; margin: 0; font-size: 24px;'>WularTech Solutions</h1>
-                    <p style='color: rgba(255,255,255,0.7); margin: 4px 0 0;'>Security & Electrical Services</p>
-                </div>
-                <div style='background: #ffffff; padding: 32px; border: 1px solid #E5E7EB;'>
-                    <h2 style='color: #111827; margin-top: 0;'>Booking {status}! {statusEmoji}</h2>
-                    <p style='color: #6B7280;'>Dear <strong>{booking.CustomerName}</strong>, {statusMessage}</p>
-                    <div style='background: #F9FAFB; border-radius: 8px; padding: 20px; margin: 24px 0;'>
-                        <table style='width: 100%; border-collapse: collapse;'>
-                            <tr><td style='padding: 8px 0; color: #6B7280; width: 140px;'>Service</td><td style='padding: 8px 0; color: #111827; font-weight: 600;'>{booking.ServiceType}</td></tr>
-                            <tr><td style='padding: 8px 0; color: #6B7280;'>Date</td><td style='padding: 8px 0; color: #111827; font-weight: 600;'>{booking.PreferredDate:dd MMM yyyy}</td></tr>
-                            <tr><td style='padding: 8px 0; color: #6B7280;'>Address</td><td style='padding: 8px 0; color: #111827; font-weight: 600;'>{booking.Address}</td></tr>
-                            <tr><td style='padding: 8px 0; color: #6B7280;'>Status</td><td style='padding: 8px 0;'><span style='background: {statusBg}; color: {statusColor}; padding: 4px 10px; border-radius: 50px; font-size: 12px; font-weight: 600;'>{status} {statusEmoji}</span></td></tr>
-                        </table>
+            var subject = $"Booking Update: {status} {statusEmoji} - WularTech Solutions";
+
+            var body = $@"
+                <div style='font-family: Inter, sans-serif; max-width: 600px; margin: 0 auto;'>
+                    <div style='background: #1A1A2E; padding: 24px; border-radius: 12px 12px 0 0;'>
+                        <h1 style='color: #E07B39; margin: 0; font-size: 24px;'>WularTech Solutions</h1>
+                        <p style='color: rgba(255,255,255,0.7); margin: 4px 0 0;'>Security &amp; Electrical Services</p>
                     </div>
-                    <p style='color: #6B7280;'>Our team will arrive on the scheduled date. For queries:</p>
-                    <p style='color: #6B7280;'>📞 <a href='https://wa.me/918825048116' style='color: #E07B39;'>+91 88250 48116</a></p>
-                    <p style='color: #6B7280;'>📧 <a href='mailto:hyatt.wular@gmail.com' style='color: #E07B39;'>hyatt.wular@gmail.com</a></p>
-                </div>
-                <div style='background: #F9FAFB; padding: 16px; text-align: center; border-radius: 0 0 12px 12px; border: 1px solid #E5E7EB; border-top: none;'>
-                    <p style='color: #9CA3AF; font-size: 13px; margin: 0;'>© 2026 WularTech Solutions. Bemina, Srinagar.</p>
-                </div>
-            </div>";
+                    <div style='background: #ffffff; padding: 32px; border: 1px solid #E5E7EB;'>
+                        <h2 style='color: #111827; margin-top: 0;'>Booking {status}! {statusEmoji}</h2>
+                        <p style='color: #6B7280;'>Dear <strong>{customerName}</strong>, {statusMessage}</p>
+                        <div style='background: #F9FAFB; border-radius: 8px; padding: 20px; margin: 24px 0;'>
+                            <table style='width: 100%; border-collapse: collapse;'>
+                                <tr><td style='padding: 8px 0; color: #6B7280; width: 140px;'>Service</td><td style='padding: 8px 0; color: #111827; font-weight: 600;'>{serviceType}</td></tr>
+                                <tr><td style='padding: 8px 0; color: #6B7280;'>Date</td><td style='padding: 8px 0; color: #111827; font-weight: 600;'>{preferredDate}</td></tr>
+                                <tr><td style='padding: 8px 0; color: #6B7280;'>Address</td><td style='padding: 8px 0; color: #111827; font-weight: 600;'>{address}</td></tr>
+                                <tr>
+                                    <td style='padding: 8px 0; color: #6B7280;'>Status</td>
+                                    <td style='padding: 8px 0;'>
+                                        <span style='background: {statusBg}; color: {statusColor}; padding: 4px 10px; border-radius: 50px; font-size: 12px; font-weight: 600;'>
+                                            {status} {statusEmoji}
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <p style='color: #6B7280;'>For any queries, contact us:</p>
+                        <p style='color: #6B7280;'>📞 <a href='https://wa.me/918825048116' style='color: #E07B39;'>+91 88250 48116</a></p>
+                        <p style='color: #6B7280;'>📧 <a href='mailto:hyatt.wular@gmail.com' style='color: #E07B39;'>hyatt.wular@gmail.com</a></p>
+                    </div>
+                    <div style='background: #F9FAFB; padding: 16px; text-align: center; border-radius: 0 0 12px 12px; border: 1px solid #E5E7EB; border-top: none;'>
+                        <p style='color: #9CA3AF; font-size: 13px; margin: 0;'>© 2026 WularTech Solutions. Bemina, Srinagar.</p>
+                    </div>
+                </div>";
 
-                using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(60));
-                await _emailService.SendEmailAsync(booking.CustomerEmail, subject, body)
-                    .WaitAsync(cts.Token);
-
-                Console.WriteLine($"Status email sent to: {booking.CustomerEmail} — {status}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Status email failed: " + ex.Message);
-            }
-
-            TempData["Success"] = $"Booking marked as {status}.";
-            return RedirectToAction("Bookings");
+            await _emailService.SendEmailAsync(booking.CustomerEmail, subject, body);
+            Console.WriteLine($"Email sent to {booking.CustomerEmail} — {status}");
         }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Email failed: " + ex.Message);
+            Console.WriteLine("Stack: " + ex.StackTrace);
+        }
+    });
+
+    TempData["Success"] = $"Booking marked as {status}.";
+    return RedirectToAction("Bookings");
+}
 
 
         [HttpPost]
