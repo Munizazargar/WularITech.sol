@@ -139,33 +139,34 @@ namespace WularItech_solutions.Controllers
             TempData["Success"] = "Booking submitted! Check your email for confirmation.";
             return RedirectToAction("Create");
         }
-    
-[HttpGet]
-public IActionResult Track()
-{
-    return View();
-}
 
-[HttpPost]
-public async Task<IActionResult> Track(string search)
-{
-    if (string.IsNullOrWhiteSpace(search))
-    {
-        TempData["Error"] = "Please enter your email or phone number.";
-        return View();
+        [HttpGet]
+        public IActionResult Track()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Track(string search)
+        {
+            if (string.IsNullOrWhiteSpace(search))
+            {
+                TempData["Error"] = "Please enter your email or phone number.";
+                return View();
+            }
+
+            var bookings = await _db.Bookings
+                .Where(b => b.CustomerEmail == search.Trim() || b.CustomerPhone == search.Trim())
+                .OrderByDescending(b => b.CreatedAt)
+                .ToListAsync();
+
+            if (!bookings.Any())
+            {
+                TempData["Error"] = "No bookings found for that email or phone number.";
+                return View();
+            }
+
+            return View(bookings);
+        }
     }
-
-    var bookings = await _db.Bookings
-        .Where(b => b.CustomerEmail == search.Trim() || b.CustomerPhone == search.Trim())
-        .OrderByDescending(b => b.CreatedAt)
-        .ToListAsync();
-
-    if (!bookings.Any())
-    {
-        TempData["Error"] = "No bookings found for that email or phone number.";
-        return View();
-    }
-
-    return View(bookings);
 }
-    }}
