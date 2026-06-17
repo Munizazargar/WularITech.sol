@@ -1003,12 +1003,9 @@ body.dark-mode .feat-desc {
 
 .auth-section {
     min-height: calc(100vh - 80px);
-    margin-top: 100px;
+    margin-top: 72px; /* was 100px */
     padding: 40px 20px 60px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
 }
 
 .auth-container {
@@ -1612,17 +1609,17 @@ body.dark-mode .feat-desc {
         transition: none !important;
     }
 
-    /* Auth */
-    .auth-section {
-        margin-top: 80px;
-        padding: 20px 16px 40px;
-    }
+  /* Auth */
+.auth-section {
+    margin-top: 64px;
+    padding: 20px 16px 40px;
+}
 
-    .auth-container {
-        grid-template-columns: 1fr;
-        max-width: 100%;
-        border-radius: 16px;
-    }
+.auth-container {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    border-radius: 16px;
+}
 
     .auth-image {
         display: none;
