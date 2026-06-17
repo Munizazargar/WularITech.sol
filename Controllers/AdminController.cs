@@ -138,59 +138,64 @@ namespace WularItech_solutions.Controllers
             return View(bookings);
         }
 
+       
         [HttpPost]
-[HttpPost]
-public async Task<IActionResult> UpdateBookingStatus(Guid id, string status)
-{
-    if (!IsAdmin()) return RedirectToAction("Login", "Account");
-
-    var booking = await _db.Bookings.FindAsync(id);
-    if (booking == null) return NotFound();
-
-    booking.Status = status;
-    await _db.SaveChangesAsync();
-
-    try
-    {
-        var statusColor = status switch
+        public async Task<IActionResult> UpdateBookingStatus(Guid id, string status)
         {
-            "Confirmed"  => "#065f46",
-            "InProgress" => "#1e40af",
-            "Completed"  => "#5b21b6",
-            "Cancelled"  => "#991b1b",
-            _            => "#92400E"
-        };
+            if (!IsAdmin()) return RedirectToAction("Login", "Account");
 
-        var statusBg = status switch
-        {
-            "Confirmed"  => "#d1fae5",
-            "InProgress" => "#dbeafe",
-            "Completed"  => "#ede9fe",
-            "Cancelled"  => "#fee2e2",
-            _            => "#FEF3C7"
-        };
+            var booking = await _db.Bookings.FindAsync(id);
+            if (booking == null) return NotFound();
 
-        var statusEmoji = status switch
-        {
-            "Confirmed"  => "✅",
-            "InProgress" => "🔧",
-            "Completed"  => "🎉",
-            "Cancelled"  => "❌",
-            _            => "🔔"
-        };
+            booking.Status = status;
 
-        var statusMessage = status switch
-        {
-            "Confirmed"  => "Great news! Your booking has been confirmed. Our technician will arrive on the scheduled date.",
-            "InProgress" => "Our technician is currently on the way and working on your service request.",
-            "Completed"  => "Your service has been completed successfully. Thank you for choosing WularTech Solutions!",
-            "Cancelled"  => "Unfortunately your booking has been cancelled. Please contact us to reschedule.",
-            _            => "Your booking status has been updated."
-        };
+            
+            await _db.SaveChangesAsync();
+            // Add this debug line temporarily
+            Console.WriteLine($"DEBUG → Email: '{booking.CustomerEmail}' | Name: '{booking.CustomerName}' | Service: '{booking.ServiceType}' | Address: '{booking.Address}'");
 
-        var subject = $"Booking Update: {status} {statusEmoji} - WularTech Solutions";
 
-        var body = $@"
+            try
+            {
+                var statusColor = status switch
+                {
+                    "Confirmed" => "#065f46",
+                    "InProgress" => "#1e40af",
+                    "Completed" => "#5b21b6",
+                    "Cancelled" => "#991b1b",
+                    _ => "#92400E"
+                };
+
+                var statusBg = status switch
+                {
+                    "Confirmed" => "#d1fae5",
+                    "InProgress" => "#dbeafe",
+                    "Completed" => "#ede9fe",
+                    "Cancelled" => "#fee2e2",
+                    _ => "#FEF3C7"
+                };
+
+                var statusEmoji = status switch
+                {
+                    "Confirmed" => "✅",
+                    "InProgress" => "🔧",
+                    "Completed" => "🎉",
+                    "Cancelled" => "❌",
+                    _ => "🔔"
+                };
+
+                var statusMessage = status switch
+                {
+                    "Confirmed" => "Great news! Your booking has been confirmed. Our technician will arrive on the scheduled date.",
+                    "InProgress" => "Our technician is currently on the way and working on your service request.",
+                    "Completed" => "Your service has been completed successfully. Thank you for choosing WularTech Solutions!",
+                    "Cancelled" => "Unfortunately your booking has been cancelled. Please contact us to reschedule.",
+                    _ => "Your booking status has been updated."
+                };
+
+                var subject = $"Booking Update: {status} {statusEmoji} - WularTech Solutions";
+
+                var body = $@"
             <div style='font-family: Inter, sans-serif; max-width: 600px; margin: 0 auto;'>
                 <div style='background: #1A1A2E; padding: 24px; border-radius: 12px 12px 0 0;'>
                     <h1 style='color: #E07B39; margin: 0; font-size: 24px;'>WularTech Solutions</h1>
@@ -216,45 +221,20 @@ public async Task<IActionResult> UpdateBookingStatus(Guid id, string status)
                 </div>
             </div>";
 
-        using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
-        await _emailService.SendEmailAsync(booking.CustomerEmail, subject, body)
-            .WaitAsync(cts.Token);
+                using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(60));
+                await _emailService.SendEmailAsync(booking.CustomerEmail, subject, body)
+                    .WaitAsync(cts.Token);
 
-        Console.WriteLine($"Status email sent to: {booking.CustomerEmail} — {status}");
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine("Status email failed: " + ex.Message);
-    }
+                Console.WriteLine($"Status email sent to: {booking.CustomerEmail} — {status}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Status email failed: " + ex.Message);
+            }
 
-    TempData["Success"] = $"Booking marked as {status}.";
-    return RedirectToAction("Bookings");
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            TempData["Success"] = $"Booking marked as {status}.";
+            return RedirectToAction("Bookings");
+        }
 
 
         [HttpPost]
@@ -269,33 +249,6 @@ public async Task<IActionResult> UpdateBookingStatus(Guid id, string status)
             return RedirectToAction("Bookings");
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         [HttpGet]
         public async Task<IActionResult> Contacts()
         {
@@ -303,31 +256,6 @@ public async Task<IActionResult> UpdateBookingStatus(Guid id, string status)
             var contacts = await _db.Contacts.OrderByDescending(c => c.CreatedAt).ToListAsync();
             return View(contacts);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         [HttpPost]
@@ -341,31 +269,6 @@ public async Task<IActionResult> UpdateBookingStatus(Guid id, string status)
             TempData["Success"] = "Message deleted.";
             return RedirectToAction("Contacts");
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         [HttpGet]
         public async Task<IActionResult> Users()
