@@ -239,17 +239,21 @@
                 </thead>
                 <tbody>
                     @{
-                        var rows = new[]
-                        {
-                            new { Service = "📷 CCTV Installation", Price = "₹1,500", Note = "Per camera" },
-                            new { Service = "🔧 CCTV Repair", Price = "₹500", Note = "Diagnosis free" },
-                            new { Service = "🖥️ DVR/NVR Setup", Price = "₹800", Note = "Per device" },
-                            new { Service = "🔍 CCTV Maintenance", Price = "₹300", Note = "Per visit" },
-                            new { Service = "⚡ Electrical Wiring", Price = "₹500", Note = "Per point" },
-                            new { Service = "🌐 Network Setup", Price = "₹1,000", Note = "Per location" },
-                            new { Service = "🏠 Home Security Package", Price = "₹8,999", Note = "4 cameras + DVR" },
-                        };
-                        bool isAlt = false;
+    var rows = new[]
+    {
+        new { Service = "🚿 Plumbing", Price = "₹300", Note = "Per visit" },
+        new { Service = "🍳 Cook on Demand", Price = "₹800", Note = "Per day" },
+        new { Service = "🧹 House Help", Price = "₹400", Note = "Per day" },
+        new { Service = "📷 CCTV Installation", Price = "₹1,500", Note = "Per camera" },
+        new { Service = "🔧 CCTV Repair", Price = "₹500", Note = "Diagnosis free" },
+        new { Service = "🖥️ DVR/NVR Setup", Price = "₹800", Note = "Per device" },
+        new { Service = "🔍 CCTV Maintenance", Price = "₹300", Note = "Per visit" },
+        new { Service = "⚡ Electrical Wiring", Price = "₹500", Note = "Per point" },
+        new { Service = "🌐 Network Setup", Price = "₹1,000", Note = "Per location" },
+        new { Service = "🏠 Home Security Package", Price = "₹8,999", Note = "4 cameras + DVR" },
+    };
+    bool isAlt = false;
+}
                     }
                     @foreach (var row in rows)
                     {
