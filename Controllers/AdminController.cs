@@ -13,12 +13,13 @@ namespace WularItech_solutions.Controllers
 
         private readonly IEmailService _emailService;
 
-        public AdminController(SqlDbContext db, ITokenService tokenService, ICloudinaryService cloudinaryService)
-        {
-            _db = db;
-            _tokenService = tokenService;
-            _cloudinaryService = cloudinaryService;
-        }
+       public AdminController(SqlDbContext db, ITokenService tokenService, ICloudinaryService cloudinaryService, IEmailService emailService)
+{
+    _db = db;
+    _tokenService = tokenService;
+    _cloudinaryService = cloudinaryService;
+    _emailService = emailService;
+}
 
         private bool IsAdmin()
         {
