@@ -10,6 +10,8 @@ namespace WularItech_solutions.Models
         [Required]
         public string FullName { get; set; }
 
+        public string PasswordHash { get; set; } = string.Empty;
+
         [Required]
         public string Phone { get; set; }
 

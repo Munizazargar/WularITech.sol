@@ -93,5 +93,70 @@ namespace WularItech_solutions.Services
                 return false;
             }
         }
+
+
+        public string CreateTechnicianToken(Technician technician)
+{
+    var claims = new[]
+    {
+        new Claim(ClaimTypes.NameIdentifier, technician.TechnicianId.ToString()),
+        new Claim(ClaimTypes.Name, technician.FullName),
+        new Claim("Role", "Technician")
+    };
+
+    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secretKey));
+    var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+    var token = new JwtSecurityToken(
+        claims: claims,
+        expires: DateTime.UtcNow.AddHours(8),
+        signingCredentials: creds
+    );
+
+    return new JwtSecurityTokenHandler().WriteToken(token);
+}
+
+public Guid? GetTechnicianId(string token)
+{
+    if (string.IsNullOrEmpty(token)) return null;
+
+    try
+    {
+        var handler = new JwtSecurityTokenHandler();
+        var key = Encoding.UTF8.GetBytes(_secretKey);
+
+        var validationParams = new TokenValidationParameters
+        {
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(key)
+        };
+
+        var principal = handler.ValidateToken(token, validationParams, out _);
+        var roleClaim = principal.FindFirst("Role");
+        if (roleClaim == null || roleClaim.Value != "Technician") return null;
+
+        var idClaim = principal.FindFirst(ClaimTypes.NameIdentifier);
+        return idClaim != null ? Guid.Parse(idClaim.Value) : null;
+    }
+    catch
+    {
+        return null;
     }
 }
+
+
+
+
+    }
+
+
+
+
+
+}
+
+
+

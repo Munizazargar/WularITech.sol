@@ -3,9 +3,12 @@ namespace WularItech_solutions.Interfaces
 {
     public interface ITokenService
     {
-        public  string CreateToken(User user);
+        public string CreateToken(User user);
         Guid VerifyTokenAndGetId(string token);
+        bool IsAdmin(string token);
 
-         bool IsAdmin(string token);
+        // NEW
+        string CreateTechnicianToken(Technician technician);
+        Guid? GetTechnicianId(string token);
     }
 }

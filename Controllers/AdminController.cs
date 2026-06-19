@@ -324,17 +324,20 @@ namespace WularItech_solutions.Controllers
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddTechnician(Technician model)
-        {
-            if (!IsAdmin()) return RedirectToAction("Login", "Account");
-            if (!ModelState.IsValid) return View(model);
+       [HttpPost]
+public async Task<IActionResult> AddTechnician(Technician model)
+{
+    if (!IsAdmin()) return RedirectToAction("Login", "Account");
+    if (!ModelState.IsValid) return View(model);
 
-            _db.Technicians.Add(model);
-            await _db.SaveChangesAsync();
-            TempData["Success"] = "Technician added successfully!";
-            return RedirectToAction("Technicians");
-        }
+    // Default password = their phone number
+    model.PasswordHash = BCrypt.Net.BCrypt.HashPassword(model.Phone);
+
+    _db.Technicians.Add(model);
+    await _db.SaveChangesAsync();
+    TempData["Success"] = "Technician added! Default password is their phone number.";
+    return RedirectToAction("Technicians");
+}
 
         [HttpPost]
         public async Task<IActionResult> ToggleTechnician(Guid id)
@@ -364,5 +367,8 @@ namespace WularItech_solutions.Controllers
             TempData["Success"] = "Technician assigned!";
             return RedirectToAction("Bookings");
         }
+
+
+        
     }
 }
