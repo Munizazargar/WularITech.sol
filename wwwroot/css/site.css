@@ -1396,6 +1396,21 @@ body.dark-mode .feat-desc {
     line-height: 1.6;
 }
 
+.auth-error-message {
+    background-color: #fdecea;
+    color: #b71c1c;
+    border: 1px solid #f5c2c0;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+
+
+
 /* ========================================
    RESPONSIVE STYLES
    ======================================== */
