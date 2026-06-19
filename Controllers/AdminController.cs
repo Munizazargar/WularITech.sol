@@ -136,7 +136,7 @@ namespace WularItech_solutions.Controllers
         {
             if (!IsAdmin()) return RedirectToAction("Login", "Account");
             var bookings = await _db.Bookings.Include(b => b.Technician).OrderByDescending(b => b.CreatedAt).ToListAsync();
-            var technicians = await _db.Technicians.Where(t => t.IsActive).ToListAsync();
+            var technicians = await _db.Technicians.Where(t => t.IsActive == true).ToListAsync();
             ViewBag.Technicians = technicians;
             return View(bookings);
         }

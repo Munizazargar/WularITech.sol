@@ -180,7 +180,7 @@ namespace WularItech_solutions.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("INTEGER");
+    .HasColumnType("boolean");
 
                     b.Property<string>("Phone")
                         .IsRequired()
