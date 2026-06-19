@@ -172,6 +172,15 @@ Console.WriteLine("=== REACHED app.Run() ===");
 
 try
 {
+
+    using (var scope = app.Services.CreateScope())
+    {
+        var db = scope.ServiceProvider.GetRequiredService<SqlDbContext>();
+        db.Database.Migrate();
+    }
+
+
+
     app.Run();
 }
 catch (Exception ex)

@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WularItech_solutions.Models
 {
@@ -6,6 +7,12 @@ namespace WularItech_solutions.Models
     {
         [Key]
         public Guid BookingId { get; set; } = Guid.NewGuid();
+
+        // Add inside Booking.cs
+        public Guid? TechnicianId { get; set; }  // nullable — not always assigned
+
+        [ForeignKey("TechnicianId")]
+        public Technician? Technician { get; set; }
 
         [Required]
         public required string CustomerName { get; set; }

@@ -13,13 +13,13 @@ namespace WularItech_solutions.Controllers
 
         private readonly IEmailService _emailService;
 
-       public AdminController(SqlDbContext db, ITokenService tokenService, ICloudinaryService cloudinaryService, IEmailService emailService)
-{
-    _db = db;
-    _tokenService = tokenService;
-    _cloudinaryService = cloudinaryService;
-    _emailService = emailService;
-}
+        public AdminController(SqlDbContext db, ITokenService tokenService, ICloudinaryService cloudinaryService, IEmailService emailService)
+        {
+            _db = db;
+            _tokenService = tokenService;
+            _cloudinaryService = cloudinaryService;
+            _emailService = emailService;
+        }
 
         private bool IsAdmin()
         {
@@ -139,72 +139,72 @@ namespace WularItech_solutions.Controllers
             return View(bookings);
         }
 
-       
+
         [HttpPost]
-public async Task<IActionResult> UpdateBookingStatus(Guid id, string status)
-{
-    if (!IsAdmin()) return RedirectToAction("Login", "Account");
-
-    var booking = await _db.Bookings.FindAsync(id);
-    if (booking == null) return NotFound();
-
-    booking.Status = status;
-    await _db.SaveChangesAsync();
-
-    Console.WriteLine($"DEBUG → Email: '{booking.CustomerEmail}' | Name: '{booking.CustomerName}' | Service: '{booking.ServiceType}' | Address: '{booking.Address}' | Date: '{booking.PreferredDate}' | Notes: '{booking.Notes}'");
-
-    _ = Task.Run(async () =>
-    {
-        try
+        public async Task<IActionResult> UpdateBookingStatus(Guid id, string status)
         {
-            var statusColor = status switch
+            if (!IsAdmin()) return RedirectToAction("Login", "Account");
+
+            var booking = await _db.Bookings.FindAsync(id);
+            if (booking == null) return NotFound();
+
+            booking.Status = status;
+            await _db.SaveChangesAsync();
+
+            Console.WriteLine($"DEBUG → Email: '{booking.CustomerEmail}' | Name: '{booking.CustomerName}' | Service: '{booking.ServiceType}' | Address: '{booking.Address}' | Date: '{booking.PreferredDate}' | Notes: '{booking.Notes}'");
+
+            _ = Task.Run(async () =>
             {
-                "Confirmed"  => "#065f46",
-                "InProgress" => "#1e40af",
-                "Completed"  => "#5b21b6",
-                "Cancelled"  => "#991b1b",
-                _            => "#92400E"
-            };
+                try
+                {
+                    var statusColor = status switch
+                    {
+                        "Confirmed" => "#065f46",
+                        "InProgress" => "#1e40af",
+                        "Completed" => "#5b21b6",
+                        "Cancelled" => "#991b1b",
+                        _ => "#92400E"
+                    };
 
-            var statusBg = status switch
-            {
-                "Confirmed"  => "#d1fae5",
-                "InProgress" => "#dbeafe",
-                "Completed"  => "#ede9fe",
-                "Cancelled"  => "#fee2e2",
-                _            => "#FEF3C7"
-            };
+                    var statusBg = status switch
+                    {
+                        "Confirmed" => "#d1fae5",
+                        "InProgress" => "#dbeafe",
+                        "Completed" => "#ede9fe",
+                        "Cancelled" => "#fee2e2",
+                        _ => "#FEF3C7"
+                    };
 
-            var statusEmoji = status switch
-            {
-                "Confirmed"  => "✅",
-                "InProgress" => "🔧",
-                "Completed"  => "🎉",
-                "Cancelled"  => "❌",
-                _            => "🔔"
-            };
+                    var statusEmoji = status switch
+                    {
+                        "Confirmed" => "✅",
+                        "InProgress" => "🔧",
+                        "Completed" => "🎉",
+                        "Cancelled" => "❌",
+                        _ => "🔔"
+                    };
 
-            var statusMessage = status switch
-            {
-                "Confirmed"  => "Great news! Your booking has been confirmed. Our technician will arrive on the scheduled date.",
-                "InProgress" => "Our technician is currently on the way and working on your service request.",
-                "Completed"  => "Your service has been completed successfully. Thank you for choosing WularTech Solutions!",
-                "Cancelled"  => "Unfortunately your booking has been cancelled. Please contact us to reschedule.",
-                _            => "Your booking status has been updated."
-            };
+                    var statusMessage = status switch
+                    {
+                        "Confirmed" => "Great news! Your booking has been confirmed. Our technician will arrive on the scheduled date.",
+                        "InProgress" => "Our technician is currently on the way and working on your service request.",
+                        "Completed" => "Your service has been completed successfully. Thank you for choosing WularTech Solutions!",
+                        "Cancelled" => "Unfortunately your booking has been cancelled. Please contact us to reschedule.",
+                        _ => "Your booking status has been updated."
+                    };
 
-            // Safe values — no nulls
-            var customerName  = booking.CustomerName  ?? "Customer";
-            var serviceType   = booking.ServiceType   ?? "Service";
-            var address       = booking.Address       ?? "N/A";
-            var notes         = booking.Notes         ?? "";
-            var preferredDate = booking.PreferredDate != default
-                                ? booking.PreferredDate.ToString("dd MMM yyyy")
-                                : "To be confirmed";
+                    // Safe values — no nulls
+                    var customerName = booking.CustomerName ?? "Customer";
+                    var serviceType = booking.ServiceType ?? "Service";
+                    var address = booking.Address ?? "N/A";
+                    var notes = booking.Notes ?? "";
+                    var preferredDate = booking.PreferredDate != default
+                                        ? booking.PreferredDate.ToString("dd MMM yyyy")
+                                        : "To be confirmed";
 
-            var subject = $"Booking Update: {status} {statusEmoji} - WularTech Solutions";
+                    var subject = $"Booking Update: {status} {statusEmoji} - WularTech Solutions";
 
-            var body = $@"
+                    var body = $@"
                 <div style='font-family: Inter, sans-serif; max-width: 600px; margin: 0 auto;'>
                     <div style='background: #1A1A2E; padding: 24px; border-radius: 12px 12px 0 0;'>
                         <h1 style='color: #E07B39; margin: 0; font-size: 24px;'>WularTech Solutions</h1>
@@ -237,19 +237,19 @@ public async Task<IActionResult> UpdateBookingStatus(Guid id, string status)
                     </div>
                 </div>";
 
-            await _emailService.SendEmailAsync(booking.CustomerEmail, subject, body);
-            Console.WriteLine($"Email sent to {booking.CustomerEmail} — {status}");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine("Email failed: " + ex.Message);
-            Console.WriteLine("Stack: " + ex.StackTrace);
-        }
-    });
+                    await _emailService.SendEmailAsync(booking.CustomerEmail, subject, body);
+                    Console.WriteLine($"Email sent to {booking.CustomerEmail} — {status}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Email failed: " + ex.Message);
+                    Console.WriteLine("Stack: " + ex.StackTrace);
+                }
+            });
 
-    TempData["Success"] = $"Booking marked as {status}.";
-    return RedirectToAction("Bookings");
-}
+            TempData["Success"] = $"Booking marked as {status}.";
+            return RedirectToAction("Bookings");
+        }
 
 
         [HttpPost]
@@ -303,6 +303,64 @@ public async Task<IActionResult> UpdateBookingStatus(Guid id, string status)
             await _db.SaveChangesAsync();
             TempData["Success"] = $"{user.Username} admin status updated.";
             return RedirectToAction("Users");
+        }
+
+        // ─── TECHNICIANS ────────────────────────────────
+
+        [HttpGet]
+        public async Task<IActionResult> Technicians()
+        {
+            if (!IsAdmin()) return RedirectToAction("Login", "Account");
+            var technicians = await _db.Technicians.OrderByDescending(t => t.CreatedAt).ToListAsync();
+            return View(technicians);
+        }
+
+        [HttpGet]
+        public IActionResult AddTechnician()
+        {
+            if (!IsAdmin()) return RedirectToAction("Login", "Account");
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddTechnician(Technician model)
+        {
+            if (!IsAdmin()) return RedirectToAction("Login", "Account");
+            if (!ModelState.IsValid) return View(model);
+
+            _db.Technicians.Add(model);
+            await _db.SaveChangesAsync();
+            TempData["Success"] = "Technician added successfully!";
+            return RedirectToAction("Technicians");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ToggleTechnician(Guid id)
+        {
+            if (!IsAdmin()) return RedirectToAction("Login", "Account");
+            var tech = await _db.Technicians.FindAsync(id);
+            if (tech == null) return NotFound();
+            tech.IsActive = !tech.IsActive;
+            await _db.SaveChangesAsync();
+            TempData["Success"] = $"{tech.FullName} status updated.";
+            return RedirectToAction("Technicians");
+        }
+
+        // ─── ASSIGN TECHNICIAN TO BOOKING ───────────────
+
+        [HttpPost]
+        public async Task<IActionResult> AssignTechnician(Guid bookingId, Guid technicianId)
+        {
+            if (!IsAdmin()) return RedirectToAction("Login", "Account");
+
+            var booking = await _db.Bookings.FindAsync(bookingId);
+            if (booking == null) return NotFound();
+
+            booking.TechnicianId = technicianId;
+            await _db.SaveChangesAsync();
+
+            TempData["Success"] = "Technician assigned!";
+            return RedirectToAction("Bookings");
         }
     }
 }

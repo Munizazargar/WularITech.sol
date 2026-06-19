@@ -17,5 +17,7 @@ namespace WularItech_solutions
 
         // Data Protection keys — persists antiforgery keys to PostgreSQL
         public DbSet<DataProtectionKey> DataProtectionKeys { get; set; } = null!;
+
+        public DbSet<Technician> Technicians { get; set; }
     }
 }
