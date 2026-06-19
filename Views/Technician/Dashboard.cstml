@@ -1,130 +1,111 @@
 @model List<WularItech_solutions.Models.Booking>
-
 @{
     ViewData["Title"] = "Technician Dashboard";
-    var myJobs = ViewBag.MyJobs as List<WularItech_solutions.Models.Booking>;
+    Layout = null;
 }
 
-@section Styles {
-    <link rel="stylesheet" href="~/css/admin.css" />
-}
-
-<div class="booking-page">
-    <div class="booking-container" style="max-width: 1000px;">
-        <div class="booking-header">
-            <h1>Welcome, @ViewBag.TechnicianName 👋</h1>
-            <p>Pick up available jobs and manage your assigned work.</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technician Dashboard</title>
+    <link rel="stylesheet" href="/css/site.css" />
+    <style>
+        body { background: #f3f4f6; margin: 0; font-family: Inter, sans-serif; }
+        .topbar { background: #1A1A2E; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; }
+        .topbar-logo { color: #E07B39; font-size: 20px; font-weight: 700; }
+        .topbar-name { color: #fff; font-size: 14px; }
+        .logout { color: #E07B39; text-decoration: none; font-size: 14px; margin-left: 16px; }
+        .container { padding: 32px; max-width: 1100px; margin: 0 auto; }
+        .welcome { font-size: 22px; font-weight: 700; color: #111827; margin-bottom: 8px; }
+        .sub { color: #6b7280; font-size: 14px; margin-bottom: 28px; }
+        .card { background: #fff; border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); border-left: 4px solid #E07B39; }
+        .card-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; }
+        .service { font-size: 17px; font-weight: 700; color: #111827; }
+        .customer { color: #6b7280; font-size: 14px; margin-top: 4px; }
+        .detail { color: #374151; font-size: 14px; margin-top: 6px; }
+        .badge { padding: 4px 12px; border-radius: 50px; font-size: 12px; font-weight: 600; }
+        .Pending { background: #fef3c7; color: #92400e; }
+        .Confirmed { background: #d1fae5; color: #065f46; }
+        .InProgress { background: #dbeafe; color: #1e40af; }
+        .Completed { background: #ede9fe; color: #5b21b6; }
+        .Cancelled { background: #fee2e2; color: #991b1b; }
+        .actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+        .btn-status { padding: 7px 16px; border: none; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; }
+        .btn-inprogress { background: #dbeafe; color: #1e40af; }
+        .btn-complete { background: #d1fae5; color: #065f46; }
+        .empty { text-align: center; padding: 60px 20px; color: #9ca3af; }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <div class="topbar-logo">WularTech Solutions</div>
+        <div>
+            <span class="topbar-name">👤 @ViewBag.TechnicianName</span>
+            <a href="/Technician/Logout" class="logout">Logout</a>
         </div>
+    </div>
+
+    <div class="container">
+        <div class="welcome">Welcome, @ViewBag.TechnicianName 👋</div>
+        <div class="sub">Here are your assigned jobs</div>
 
         @if (TempData["Success"] != null)
         {
-            <div class="admin-alert admin-alert--success">@TempData["Success"]</div>
+            <div style="background:#d1fae5;color:#065f46;padding:12px 16px;border-radius:8px;margin-bottom:16px;">
+                @TempData["Success"]
+            </div>
         }
-        @if (TempData["Error"] != null)
+
+        @if (!Model.Any())
         {
-            <div class="admin-alert admin-alert--error">@TempData["Error"]</div>
+            <div class="empty">
+                <div style="font-size:48px;">📋</div>
+                <div style="font-size:18px;font-weight:600;margin-top:12px;">No jobs assigned yet</div>
+                <div style="margin-top:6px;">Check back later</div>
+            </div>
         }
-
-        <!-- My Accepted Jobs -->
-        <div class="admin-card">
-            <div class="admin-card-header">
-                <h2>My Jobs (@(myJobs?.Count ?? 0))</h2>
-            </div>
-
-            @if (myJobs != null && myJobs.Any())
+        else
+        {
+            @foreach (var b in Model)
             {
-                <div class="admin-table-wrapper">
-                    <table class="admin-table">
-                        <thead>
-                            <tr>
-                                <th>Service</th>
-                                <th>Customer</th>
-                                <th>Date</th>
-                                <th>Address</th>
-                                <th>Status</th>
-                                <th>Update</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var job in myJobs)
+                <div class="card">
+                    <div class="card-top">
+                        <div>
+                            <div class="service">@b.ServiceType</div>
+                            <div class="customer">👤 @b.CustomerName &nbsp;|&nbsp; 📞 @b.CustomerPhone</div>
+                            <div class="detail">📍 @b.Address</div>
+                            <div class="detail">📅 @b.PreferredDate.ToString("dd MMM yyyy")</div>
+                            @if (!string.IsNullOrEmpty(b.Notes))
                             {
-                                <tr>
-                                    <td><strong>@job.ServiceType</strong></td>
-                                    <td>@job.CustomerName<br /><small class="admin-sub">@job.CustomerPhone</small></td>
-                                    <td>@job.PreferredDate.ToString("dd MMM yyyy")</td>
-                                    <td class="admin-address">@job.Address</td>
-                                    <td><span class="status-badge status-@job.Status.ToLower()">@job.Status</span></td>
-                                    <td>
-                                        <form asp-action="UpdateJobStatus" method="post" style="display:flex; gap:4px;">
-                                            <input type="hidden" name="bookingId" value="@job.BookingId" />
-                                            <select name="status" class="admin-select">
-                                                <option value="Confirmed" selected="@(job.Status == "Confirmed")">Confirmed</option>
-                                                <option value="InProgress" selected="@(job.Status == "InProgress")">In Progress</option>
-                                                <option value="Completed" selected="@(job.Status == "Completed")">Completed</option>
-                                            </select>
-                                            <button type="submit" class="btn-admin-edit">Update</button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                <div class="detail">📝 @b.Notes</div>
                             }
-                        </tbody>
-                    </table>
+                        </div>
+                        <span class="badge @b.Status">@b.Status</span>
+                    </div>
+
+                    <div class="actions">
+                        @if (b.Status == "Pending" || b.Status == "Confirmed")
+                        {
+                            <form method="post" action="/Technician/UpdateStatus">
+                                <input type="hidden" name="id" value="@b.BookingId" />
+                                <input type="hidden" name="status" value="InProgress" />
+                                <button type="submit" class="btn-status btn-inprogress">▶ Mark In Progress</button>
+                            </form>
+                        }
+                        @if (b.Status != "Completed" && b.Status != "Cancelled")
+                        {
+                            <form method="post" action="/Technician/UpdateStatus">
+                                <input type="hidden" name="id" value="@b.BookingId" />
+                                <input type="hidden" name="status" value="Completed" />
+                                <button type="submit" class="btn-status btn-complete">✅ Mark Completed</button>
+                            </form>
+                        }
+                    </div>
                 </div>
             }
-            else
-            {
-                <p class="admin-empty">No jobs accepted yet. Pick one from the available jobs below.</p>
-            }
-        </div>
-
-        <!-- Available Jobs Pool -->
-        <div class="admin-card">
-            <div class="admin-card-header">
-                <h2>Available Jobs (@Model.Count)</h2>
-            </div>
-
-            @if (Model.Any())
-            {
-                <div class="admin-table-wrapper">
-                    <table class="admin-table">
-                        <thead>
-                            <tr>
-                                <th>Service</th>
-                                <th>Customer</th>
-                                <th>Date</th>
-                                <th>Address</th>
-                                <th>Notes</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var job in Model)
-                            {
-                                <tr>
-                                    <td><strong>@job.ServiceType</strong></td>
-                                    <td>@job.CustomerName</td>
-                                    <td>@job.PreferredDate.ToString("dd MMM yyyy")</td>
-                                    <td class="admin-address">@job.Address</td>
-                                    <td class="admin-message">@(string.IsNullOrEmpty(job.Notes) ? "—" : job.Notes)</td>
-                                    <td>
-                                        <form asp-action="AcceptJob" method="post"
-                                              onsubmit="return confirm('Accept this job?');">
-                                            <input type="hidden" name="bookingId" value="@job.BookingId" />
-                                            <button type="submit" class="btn-admin-primary" style="padding:6px 14px; font-size:12px;">
-                                                Accept Job
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            }
-            else
-            {
-                <p class="admin-empty">No available jobs right now. Check back soon.</p>
-            }
-        </div>
+        }
     </div>
-</div>
+</body>
+</html>
