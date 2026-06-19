@@ -58,6 +58,12 @@
                 </svg>
                 Users
             </a>
+            <a href="/Admin/Technicians" class="sidebar-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
+                </svg>
+                Technicians
+            </a>
             <a href="/" class="sidebar-link sidebar-link--back">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
@@ -89,6 +95,7 @@
                                 <th>Service</th>
                                 <th>Date</th>
                                 <th>Address</th>
+                                <th>Technician</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -97,6 +104,30 @@
                             @foreach (var b in Model)
                             {
                                 <tr>
+                                    <td>@b.CustomerName</td>
+                                    <td>@b.CustomerPhone</td>
+                                    <td>@b.ServiceType</td>
+                                    <td>@b.PreferredDate.ToString("dd MMM yyyy")</td>
+                                    <td>@b.Address</td>
+                                    <td>
+                                        @if (b.TechnicianId == null)
+                                        {
+                                            <span style="color:#ef4444;font-size:12px;font-weight:600;">⚠ Please assign a technician</span>
+                                        }
+                                        else
+                                        {
+                                            var tech = ((List<WularItech_solutions.Models.Technician>)ViewBag.Technicians)
+                                                .FirstOrDefault(t => t.TechnicianId == b.TechnicianId);
+                                            <span style="color:#065f46;font-size:13px;font-weight:600;">✅ @(tech?.FullName ?? "Assigned")</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <span style="padding:4px 10px;border-radius:50px;font-size:12px;font-weight:600;
+                                            background:@(b.Status == "Completed" ? "#ede9fe" : b.Status == "Confirmed" ? "#d1fae5" : b.Status == "Cancelled" ? "#fee2e2" : "#fef3c7");
+                                            color:@(b.Status == "Completed" ? "#5b21b6" : b.Status == "Confirmed" ? "#065f46" : b.Status == "Cancelled" ? "#991b1b" : "#92400e");">
+                                            @b.Status
+                                        </span>
+                                    </td>
                                     <td>
                                         <div class="admin-actions-row">
                                             <!-- Status Update -->
@@ -104,12 +135,9 @@
                                                 <input type="hidden" name="id" value="@b.BookingId" />
                                                 <select name="status" class="admin-select">
                                                     <option value="Pending" selected="@(b.Status == "Pending")">Pending</option>
-                                                    <option value="Confirmed" selected="@(b.Status == "Confirmed")">Confirmed
-                                                    </option>
-                                                    <option value="Completed" selected="@(b.Status == "Completed")">Completed
-                                                    </option>
-                                                    <option value="Cancelled" selected="@(b.Status == "Cancelled")">Cancelled
-                                                    </option>
+                                                    <option value="Confirmed" selected="@(b.Status == "Confirmed")">Confirmed</option>
+                                                    <option value="Completed" selected="@(b.Status == "Completed")">Completed</option>
+                                                    <option value="Cancelled" selected="@(b.Status == "Cancelled")">Cancelled</option>
                                                 </select>
                                                 <button type="submit" class="btn-admin-edit">Update</button>
                                             </form>
@@ -119,11 +147,9 @@
                                                 <input type="hidden" name="bookingId" value="@b.BookingId" />
                                                 <select name="technicianId" class="admin-select">
                                                     <option value="">-- Assign Tech --</option>
-                                                    @foreach (var tech in
-                                                                                (List<WularItech_solutions.Models.Technician>)ViewBag.Technicians)
+                                                    @foreach (var tech in (List<WularItech_solutions.Models.Technician>)ViewBag.Technicians)
                                                     {
-                                                        <option value="@tech.TechnicianId"
-                                                                selected="@(b.TechnicianId == tech.TechnicianId)">
+                                                        <option value="@tech.TechnicianId" selected="@(b.TechnicianId == tech.TechnicianId)">
                                                             @tech.FullName (@tech.Skill)
                                                         </option>
                                                     }
