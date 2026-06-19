@@ -1,0 +1,34 @@
+@model WularItech_solutions.Models.Technician
+
+<div style="padding: 32px; max-width: 560px;">
+    <h2 style="font-size: 24px; font-weight: 700; margin-bottom: 24px;">Add Technician</h2>
+
+    <form method="post" action="/Admin/AddTechnician">
+        <div style="margin-bottom: 16px;">
+            <label style="font-size: 14px; font-weight: 600; display: block; margin-bottom: 6px;">Full Name *</label>
+            <input name="FullName" required style="width: 100%; padding: 10px 14px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px;" />
+        </div>
+        <div style="margin-bottom: 16px;">
+            <label style="font-size: 14px; font-weight: 600; display: block; margin-bottom: 6px;">Phone *</label>
+            <input name="Phone" required style="width: 100%; padding: 10px 14px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px;" />
+        </div>
+        <div style="margin-bottom: 16px;">
+            <label style="font-size: 14px; font-weight: 600; display: block; margin-bottom: 6px;">Skill *</label>
+            <select name="Skill" required style="width: 100%; padding: 10px 14px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px;">
+                <option value="">-- Select Skill --</option>
+                <option value="CCTV">CCTV</option>
+                <option value="Electrical">Electrical</option>
+                <option value="Plumbing">Plumbing</option>
+                <option value="Network Setup">Network Setup</option>
+                <option value="Cook on Demand">Cook on Demand</option>
+                <option value="House Help">House Help</option>
+            </select>
+        </div>
+        <div style="margin-bottom: 24px;">
+            <label style="font-size: 14px; font-weight: 600; display: block; margin-bottom: 6px;">Area</label>
+            <input name="Area" placeholder="e.g. Bandipora, Sopore" style="width: 100%; padding: 10px 14px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px;" />
+        </div>
+        <button type="submit" class="btn-primary" style="padding: 12px 28px;">Add Technician</button>
+        <a href="/Admin/Technicians" style="margin-left: 16px; color: #6b7280; font-size: 14px;">Cancel</a>
+    </form>
+</div>

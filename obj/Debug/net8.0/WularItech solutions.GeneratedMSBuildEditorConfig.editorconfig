@@ -31,6 +31,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/mvc/WularItech solutions/Views/Admin/AddTechnician.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkVGVjaG5pY2lhbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/mvc/WularItech solutions/Views/Admin/Bookings.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQm9va2luZ3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -53,6 +57,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/mvc/WularItech solutions/Views/Admin/Products.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUHJvZHVjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/mvc/WularItech solutions/Views/Admin/Technicians.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGVjaG5pY2lhbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/mvc/WularItech solutions/Views/Admin/Users.cshtml]

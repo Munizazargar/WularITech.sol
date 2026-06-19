@@ -1,0 +1,57 @@
+@model List<WularItech_solutions.Models.Technician>
+
+<div style="padding: 32px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <h2 style="font-size: 24px; font-weight: 700;">Technicians</h2>
+        <a href="/Admin/AddTechnician" class="btn-primary" style="padding: 10px 20px;">+ Add Technician</a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div style="background: #d1fae5; color: #065f46; padding: 12px 16px; border-radius: 8px; margin-bottom: 16px;">
+            @TempData["Success"]
+        </div>
+    }
+
+    <table style="width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
+        <thead>
+            <tr style="background: #1A1A2E; color: #fff;">
+                <th style="padding: 14px 20px; text-align: left;">Name</th>
+                <th style="padding: 14px 20px; text-align: left;">Phone</th>
+                <th style="padding: 14px 20px; text-align: left;">Skill</th>
+                <th style="padding: 14px 20px; text-align: left;">Area</th>
+                <th style="padding: 14px 20px; text-align: left;">Status</th>
+                <th style="padding: 14px 20px; text-align: left;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var tech in Model)
+            {
+                <tr style="border-bottom: 1px solid #f0f0f0;">
+                    <td style="padding: 14px 20px;">@tech.FullName</td>
+                    <td style="padding: 14px 20px;">@tech.Phone</td>
+                    <td style="padding: 14px 20px;">@tech.Skill</td>
+                    <td style="padding: 14px 20px;">@(tech.Area ?? "—")</td>
+                    <td style="padding: 14px 20px;">
+                        @if (tech.IsActive)
+                        {
+                            <span style="background: #d1fae5; color: #065f46; padding: 4px 10px; border-radius: 50px; font-size: 12px; font-weight: 600;">Active</span>
+                        }
+                        else
+                        {
+                            <span style="background: #fee2e2; color: #991b1b; padding: 4px 10px; border-radius: 50px; font-size: 12px; font-weight: 600;">Inactive</span>
+                        }
+                    </td>
+                    <td style="padding: 14px 20px;">
+                        <form method="post" action="/Admin/ToggleTechnician">
+                            <input type="hidden" name="id" value="@tech.TechnicianId" />
+                            <button type="submit" style="background: #f3f4f6; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 13px;">
+                                @(tech.IsActive ? "Deactivate" : "Activate")
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

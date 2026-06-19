@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WularItech solutions")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+14b17493801517f7f52575d8e6990ef2121bcee2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+07782b555739426b48b4efed2fed2bc4e4e81fc2")]
 [assembly: System.Reflection.AssemblyProductAttribute("WularItech solutions")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WularItech solutions")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
