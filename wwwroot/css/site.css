@@ -1408,7 +1408,16 @@ body.dark-mode .feat-desc {
 }
 
 
-
+.auth-success-message {
+    background-color: #e6f4ea;
+    color: #1e7e34;
+    border: 1px solid #b7e1c0;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: 500;
+}
 
 
 /* ========================================
