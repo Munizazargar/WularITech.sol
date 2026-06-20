@@ -19,5 +19,7 @@ namespace WularItech_solutions
         public DbSet<DataProtectionKey> DataProtectionKeys { get; set; } = null!;
 
         public DbSet<Technician> Technicians { get; set; }
+
+        public DbSet<PendingRegistration> PendingRegistrations { get; set; }
     }
 }

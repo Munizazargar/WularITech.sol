@@ -23,6 +23,15 @@
             <form method="post" asp-action="Register" class="auth-form">
                 @Html.AntiForgeryToken()
 
+                @if (ViewBag.errorMessage != null)
+                {
+                    <div class="auth-error-message">@ViewBag.errorMessage</div>
+                }
+                @if (ViewBag.message != null)
+                {
+                    <div class="auth-error-message">@ViewBag.message</div>
+                }
+
                 <!-- Username -->
                 <div class="form-group">
                     <label for="username">Username</label>

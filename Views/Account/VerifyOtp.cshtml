@@ -1,0 +1,64 @@
+@model WularItech_solutions.ViewModels.VerifyOtpViewModel
+@{
+    ViewData["Title"] = "Verify Your Email";
+}
+
+<section class="auth-section">
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </div>
+                <h1 class="auth-title">Verify Your Email</h1>
+                <p class="auth-subtitle">We sent a 6-digit code to @Model.Email</p>
+            </div>
+
+            <form method="post" asp-action="VerifyOtp" class="auth-form">
+                @if (ViewBag.errorMessage != null)
+                {
+                    <div class="auth-error-message">@ViewBag.errorMessage</div>
+                }
+                @if (ViewBag.message != null)
+                {
+                    <div class="auth-success-message">@ViewBag.message</div>
+                }
+
+                <input type="hidden" name="Email" value="@Model.Email" />
+
+                <div class="form-group">
+                    <label for="otp">Verification Code</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="otp" name="Otp" maxlength="6" placeholder="Enter 6-digit code" required />
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-auth-primary">
+                    Verify Account
+                </button>
+            </form>
+
+            <form method="post" asp-action="ResendOtp" class="auth-form">
+                <input type="hidden" name="email" value="@Model.Email" />
+                <button type="submit" class="btn-auth-secondary">
+                    Resend Code
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                <p><a href="/Account/Register">Back to Register</a></p>
+            </div>
+        </div>
+
+        <div class="auth-image">
+            <img src="~/images/auth-bg.jpg" alt="Security" />
+            <div class="auth-image-overlay">
+                <h2>Almost There</h2>
+                <p>Just one more step to secure your account with WularTech.</p>
+            </div>
+        </div>
+    </div>
+</section>
