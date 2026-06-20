@@ -1,4 +1,21 @@
-﻿<!DOCTYPE html>
+﻿@inject WularItech_solutions.Interfaces.ITokenService TokenService
+@{
+    var token = Context.Request.Cookies["jwt"];
+    bool isLoggedIn = !string.IsNullOrEmpty(token);
+    bool isAdmin = false;
+    if (isLoggedIn)
+    {
+        try
+        {
+            isAdmin = TokenService.IsAdmin(token);
+        }
+        catch
+        {
+            isAdmin = false;
+        }
+    }
+}
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -40,19 +57,15 @@
                     <li><a href="/Home/Pricing" class="nav-link">Pricing</a></li>
                     <li><a href="/Booking/Create" class="nav-link">Book Service</a></li>
                     <li><a href="/Booking/Track" class="nav-link">Track Booking</a></li>
-                    
-                    @if (!string.IsNullOrEmpty(Context.Request.Cookies["jwt"]))
+
+                    @if (isAdmin)
                     {
                         <li><a href="/Admin" class="nav-link">Admin</a></li>
                     }
                 </ul>
 
-                @{
-                    var token = Context.Request.Cookies["jwt"];
-                }
-
                 <div class="auth-buttons">
-                    @if (!string.IsNullOrEmpty(token))
+                    @if (isLoggedIn)
                     {
                         <form asp-controller="Account" asp-action="Logout" method="post" style="display:inline;">
                             <button type="submit" class="btn-register" style="border:none; cursor:pointer;">
@@ -94,12 +107,12 @@
         <a href="/Home/Pricing">Pricing</a>
         <a href="/Booking/Create">Book Service</a>
         <a href="/Booking/Track">Track Booking</a>
-        @if (!string.IsNullOrEmpty(Context.Request.Cookies["jwt"]))
+        @if (isAdmin)
         {
             <a href="/Admin">Admin</a>
         }
         <div class="mobile-auth">
-            @if (!string.IsNullOrEmpty(Context.Request.Cookies["jwt"]))
+            @if (isLoggedIn)
             {
                 <form asp-controller="Account" asp-action="Logout" method="post" style="flex:1;">
                     <button type="submit" class="btn-register"
