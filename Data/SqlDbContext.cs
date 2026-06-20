@@ -21,5 +21,7 @@ namespace WularItech_solutions
         public DbSet<Technician> Technicians { get; set; }
 
         public DbSet<PendingRegistration> PendingRegistrations { get; set; }
+
+        public DbSet<Review> Reviews { get; set; }
     }
 }

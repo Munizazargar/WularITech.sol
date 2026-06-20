@@ -1,0 +1,45 @@
+@model WularItech_solutions.ViewModels.CreateReviewViewModel
+@{
+    ViewData["Title"] = "Leave a Review";
+}
+
+<section class="auth-section">
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1 class="auth-title">Rate Your Experience</h1>
+                <p class="auth-subtitle">Service: @ViewBag.ServiceType</p>
+            </div>
+
+            <form method="post" asp-action="Create" class="auth-form">
+                @if (ViewBag.errorMessage != null)
+                {
+                    <div class="auth-error-message">@ViewBag.errorMessage</div>
+                }
+
+                <input type="hidden" name="BookingId" value="@Model.BookingId" />
+
+                <div class="form-group">
+                    <label for="rating">Rating</label>
+                    <select id="rating" name="Rating" required>
+                        <option value="">Select a rating</option>
+                        <option value="5">5 - Excellent</option>
+                        <option value="4">4 - Good</option>
+                        <option value="3">3 - Average</option>
+                        <option value="2">2 - Poor</option>
+                        <option value="1">1 - Very Poor</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="comment">Your Review</label>
+                    <textarea id="comment" name="Comment" rows="4" placeholder="Tell us about your experience..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-auth-primary">
+                    Submit Review
+                </button>
+            </form>
+        </div>
+    </div>
+</section>

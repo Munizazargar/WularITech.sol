@@ -104,6 +104,7 @@
             .progress-label {
                 font-size: 9px;
             }
+
             .progress-dot {
                 width: 26px;
                 height: 26px;
@@ -148,39 +149,39 @@
                 {
                     var statusColor = booking.Status switch
                     {
-                        "Confirmed"  => "#065f46",
+                        "Confirmed" => "#065f46",
                         "InProgress" => "#1e40af",
-                        "Completed"  => "#5b21b6",
-                        "Cancelled"  => "#991b1b",
-                        _            => "#92400E"
+                        "Completed" => "#5b21b6",
+                        "Cancelled" => "#991b1b",
+                        _ => "#92400E"
                     };
 
                     var statusBg = booking.Status switch
                     {
-                        "Confirmed"  => "#d1fae5",
+                        "Confirmed" => "#d1fae5",
                         "InProgress" => "#dbeafe",
-                        "Completed"  => "#ede9fe",
-                        "Cancelled"  => "#fee2e2",
-                        _            => "#FEF3C7"
+                        "Completed" => "#ede9fe",
+                        "Cancelled" => "#fee2e2",
+                        _ => "#FEF3C7"
                     };
 
                     var statusEmoji = booking.Status switch
                     {
-                        "Confirmed"  => "✅",
+                        "Confirmed" => "✅",
                         "InProgress" => "🔧",
-                        "Completed"  => "🎉",
-                        "Cancelled"  => "❌",
-                        _            => "⏳"
+                        "Completed" => "🎉",
+                        "Cancelled" => "❌",
+                        _ => "⏳"
                     };
 
                     // Progress step index: 0=Pending, 1=Confirmed, 2=InProgress, 3=Completed
                     var stepIndex = booking.Status switch
                     {
-                        "Confirmed"  => 1,
+                        "Confirmed" => 1,
                         "InProgress" => 2,
-                        "Completed"  => 3,
-                        "Cancelled"  => -1,
-                        _            => 0
+                        "Completed" => 3,
+                        "Cancelled" => -1,
+                        _ => 0
                     };
 
                     var isCancelled = booking.Status == "Cancelled";
@@ -188,14 +189,16 @@
                     <div class="admin-card" style="margin-bottom: 20px; padding: 24px;">
 
                         <!-- Header -->
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
                             <div>
                                 <h3 style="margin: 0; color: var(--text-dark, #111827);">@booking.ServiceType</h3>
                                 <p style="margin: 4px 0 0; color: #6B7280; font-size: 13px;">
                                     Booked on @booking.CreatedAt.ToString("dd MMM yyyy")
                                 </p>
                             </div>
-                            <span style="background: @statusBg; color: @statusColor; padding: 6px 14px; border-radius: 50px; font-size: 13px; font-weight: 600;">
+                            <span
+                                style="background: @statusBg; color: @statusColor; padding: 6px 14px; border-radius: 50px; font-size: 13px; font-weight: 600;">
                                 @statusEmoji @booking.Status
                             </span>
                         </div>
@@ -209,7 +212,8 @@
                                     <div class="progress-dot @(stepIndex >= 0 ? (stepIndex > 0 ? "done" : "active") : "")">
                                         @(stepIndex > 0 ? "✓" : "1")
                                     </div>
-                                    <span class="progress-label @(stepIndex >= 0 ? (stepIndex > 0 ? "done" : "active") : "")">Pending</span>
+                                    <span
+                                    class="progress-label @(stepIndex >= 0 ? (stepIndex > 0 ? "done" : "active") : "")">Pending</span>
                                 </div>
 
                                 <div class="progress-line @(stepIndex > 0 ? "filled" : "")"></div>
@@ -219,7 +223,8 @@
                                     <div class="progress-dot @(stepIndex >= 1 ? (stepIndex > 1 ? "done" : "active") : "")">
                                         @(stepIndex > 1 ? "✓" : "2")
                                     </div>
-                                    <span class="progress-label @(stepIndex >= 1 ? (stepIndex > 1 ? "done" : "active") : "")">Confirmed</span>
+                                    <span
+                                    class="progress-label @(stepIndex >= 1 ? (stepIndex > 1 ? "done" : "active") : "")">Confirmed</span>
                                 </div>
 
                                 <div class="progress-line @(stepIndex > 1 ? "filled" : stepIndex == 1 ? "active" : "")"></div>
@@ -229,60 +234,75 @@
                                     <div class="progress-dot @(stepIndex >= 2 ? (stepIndex > 2 ? "done" : "active") : "")">
                                         @(stepIndex > 2 ? "✓" : "3")
                                     </div>
-                                    <span class="progress-label @(stepIndex >= 2 ? (stepIndex > 2 ? "done" : "active") : "")">In Progress</span>
-                                </div>
-
-                                <div class="progress-line @(stepIndex > 2 ? "filled" : stepIndex == 2 ? "active" : "")"></div>
-
-                                <!-- Step 3: Completed -->
-                                <div class="progress-step">
-                                    <div class="progress-dot @(stepIndex >= 3 ? "done" : "")">
-                                        @(stepIndex >= 3 ? "✓" : "4")
+                                    <span class="progress-label @(stepIndex >= 2 ? (stepIndex > 2 ? "done" : "active") : "")">In
+                                        Progress</span>
                                     </div>
-                                    <span class="progress-label @(stepIndex >= 3 ? "done" : "")">Completed</span>
-                                </div>
-                            </div>
-                        }
-                        else
-                        {
-                            <!-- Cancelled message -->
-                            <div style="background: #FEF2F2; border: 1px solid #FECACA; border-radius: 10px; padding: 14px 18px; margin: 16px 0; display: flex; align-items: center; gap: 10px;">
-                                <span style="font-size: 20px;">❌</span>
-                                <div>
-                                    <p style="margin: 0; color: #991b1b; font-weight: 600; font-size: 14px;">Booking Cancelled</p>
-                                    <p style="margin: 4px 0 0; color: #B91C1C; font-size: 13px;">Please contact us on WhatsApp to reschedule.</p>
-                                </div>
-                            </div>
-                        }
 
-                        <!-- Booking Details -->
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px;">
-                            <div>
-                                <p style="margin: 0; color: #6B7280; font-size: 12px;">PREFERRED DATE</p>
-                                <p style="margin: 4px 0 0; color: var(--text-dark, #111827); font-weight: 600;">@booking.PreferredDate.ToString("dd MMM yyyy")</p>
-                            </div>
-                            <div>
-                                <p style="margin: 0; color: #6B7280; font-size: 12px;">ADDRESS</p>
-                                <p style="margin: 4px 0 0; color: var(--text-dark, #111827); font-weight: 600;">@booking.Address</p>
-                            </div>
-                            @if (!string.IsNullOrEmpty(booking.Notes))
-                            {
-                                <div style="grid-column: span 2;">
-                                    <p style="margin: 0; color: #6B7280; font-size: 12px;">NOTES</p>
-                                    <p style="margin: 4px 0 0; color: var(--text-dark, #111827);">@booking.Notes</p>
+                                    <div class="progress-line @(stepIndex > 2 ? "filled" : stepIndex == 2 ? "active" : "")"></div>
+
+                                    <!-- Step 3: Completed -->
+                                    <div class="progress-step">
+                                        <div class="progress-dot @(stepIndex >= 3 ? "done" : "")">
+                                            @(stepIndex >= 3 ? "✓" : "4")
+                                        </div>
+                                        <span class="progress-label @(stepIndex >= 3 ? "done" : "")">Completed</span>
+                                    </div>
                                 </div>
                             }
+                        else
+                            {
+                                <!-- Cancelled message -->
+                                <div
+                                    style="background: #FEF2F2; border: 1px solid #FECACA; border-radius: 10px; padding: 14px 18px; margin: 16px 0; display: flex; align-items: center; gap: 10px;">
+                                    <span style="font-size: 20px;">❌</span>
+                                    <div>
+                                        <p style="margin: 0; color: #991b1b; font-weight: 600; font-size: 14px;">Booking Cancelled</p>
+                                        <p style="margin: 4px 0 0; color: #B91C1C; font-size: 13px;">Please contact us on WhatsApp to
+                                            reschedule.</p>
+                                        </div>
+                                    </div>
+                                }
+
+                                <!-- Booking Details -->
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px;">
+                                    <div>
+                                        <p style="margin: 0; color: #6B7280; font-size: 12px;">PREFERRED DATE</p>
+                                        <p style="margin: 4px 0 0; color: var(--text-dark, #111827); font-weight: 600;">
+                                            @booking.PreferredDate.ToString("dd MMM yyyy")</p>
+                                        </div>
+                                        <div>
+                                            <p style="margin: 0; color: #6B7280; font-size: 12px;">ADDRESS</p>
+                                            <p style="margin: 4px 0 0; color: var(--text-dark, #111827); font-weight: 600;">@booking.Address
+                                            </p>
+                                        </div>
+                                        @if (!string.IsNullOrEmpty(booking.Notes))
+                                        {
+                                            <div style="grid-column: span 2;">
+                                                <p style="margin: 0; color: #6B7280; font-size: 12px;">NOTES</p>
+                                                <p style="margin: 4px 0 0; color: var(--text-dark, #111827);">@booking.Notes</p>
+                                            </div>
+                                        }
+                                    </div>
+
+                                    @if (booking.Status == "Completed")
+                                    {
+                                        <div style="margin-top: 16px; text-align: right;">
+                                            <a href="/Review/Create?bookingId=@booking.BookingId" class="btn-admin-primary"
+                                               style="display: inline-block; text-decoration: none;">
+                                                ⭐ Leave a Review
+                                            </a>
+                                        </div>
+                                    }
+
+                                </div>
+                            }
+
+                            <div style="text-align: center; margin-top: 24px;">
+                                <p style="color: #6B7280;">Need help? Contact us on
+                                    <a href="https://wa.me/919906521435" style="color: #E07B39; font-weight: 600;">WhatsApp</a>
+                                </p>
+                            </div>
                         </div>
-
-                    </div>
-                }
-
-                <div style="text-align: center; margin-top: 24px;">
-                    <p style="color: #6B7280;">Need help? Contact us on
-                        <a href="https://wa.me/919906521435" style="color: #E07B39; font-weight: 600;">WhatsApp</a>
-                    </p>
+                    }
                 </div>
             </div>
-        }
-    </div>
-</div>
