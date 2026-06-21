@@ -46,6 +46,12 @@ body.dark-mode {
     --shadow-xl: 0 20px 30px rgba(0, 0, 0, 0.7);
 }
 
+body.dark-mode .auth-container,
+body.dark-mode .auth-card {
+    background: var(--bg-white) !important;
+    color: var(--text-dark) !important;
+}
+
 /* Reset & Base Styles */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -1026,19 +1032,17 @@ body.dark-mode .feat-desc {
     justify-content: center;
     background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
 }
-
 .auth-container {
     max-width: 1100px;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;
-    background: #fff;
+    background: var(--bg-white);
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-xl);
 }
-
 .auth-card {
     padding: 50px 45px;
     display: flex;
