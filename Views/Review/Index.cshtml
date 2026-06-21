@@ -17,13 +17,13 @@
                 @foreach (var review in Model)
                 {
                     <div class="auth-card" style="text-align:left;">
-                        <div style="display:flex; justify-content:space-between; align-items:center;">
-                            <strong>@review.CustomerName</strong>
-                            <span>@string.Concat(Enumerable.Repeat("⭐", review.Rating))</span>
-                        </div>
-                        <p style="color:#888; font-size:13px; margin:4px 0;">@review.ServiceType</p>
-                        <p>@review.Comment</p>
-                    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <strong>@review.CustomerName</strong>
+        <span>@string.Concat(Enumerable.Repeat("⭐", review.Rating))</span>
+    </div>
+    <p style="color:var(--text-light); font-size:13px; margin:4px 0;">@review.ServiceType</p>
+    <p style="color:var(--text-dark);">@review.Comment</p>
+</div>
                 }
             </div>
         }

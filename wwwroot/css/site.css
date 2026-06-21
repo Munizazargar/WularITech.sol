@@ -1024,7 +1024,7 @@ body.dark-mode .feat-desc {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+    background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
 }
 
 .auth-container {
@@ -1043,6 +1043,10 @@ body.dark-mode .feat-desc {
     padding: 50px 45px;
     display: flex;
     flex-direction: column;
+    background: var(--bg-white);
+    color: var(--text-dark);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
 }
 
 .auth-header {
