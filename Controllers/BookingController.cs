@@ -141,32 +141,40 @@ namespace WularItech_solutions.Controllers
         }
 
         [HttpGet]
-        public IActionResult Track()
-        {
-            return View();
-        }
+public IActionResult Track()
+{
+    return View();
+}
 
-        [HttpPost]
-        public async Task<IActionResult> Track(string search)
-        {
-            if (string.IsNullOrWhiteSpace(search))
-            {
-                TempData["Error"] = "Please enter your email or phone number.";
-                return View();
-            }
+[HttpPost]
+public async Task<IActionResult> Track(string search)
+{
+    if (string.IsNullOrWhiteSpace(search))
+    {
+        TempData["Error"] = "Please enter your email or phone number.";
+        return View();
+    }
 
-            var bookings = await _db.Bookings
-                .Where(b => b.CustomerEmail == search.Trim() || b.CustomerPhone == search.Trim())
-                .OrderByDescending(b => b.CreatedAt)
-                .ToListAsync();
+    var bookings = await _db.Bookings
+        .Where(b => b.CustomerEmail == search.Trim() || b.CustomerPhone == search.Trim())
+        .OrderByDescending(b => b.CreatedAt)
+        .ToListAsync();
 
-            if (!bookings.Any())
-            {
-                TempData["Error"] = "No bookings found for that email or phone number.";
-                return View();
-            }
+    if (!bookings.Any())
+    {
+        TempData["Error"] = "No bookings found for that email or phone number.";
+        return View();
+    }
 
-            return View(bookings);
-        }
+    var bookingIds = bookings.Select(b => b.BookingId).ToList();
+    var reviewedBookingIds = await _db.Reviews
+        .Where(r => bookingIds.Contains(r.BookingId))
+        .Select(r => r.BookingId)
+        .ToListAsync();
+
+    ViewBag.ReviewedBookingIds = new HashSet<Guid>(reviewedBookingIds);
+
+    return View(bookings);
+}
     }
 }

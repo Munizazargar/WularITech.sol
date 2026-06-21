@@ -30,46 +30,30 @@ namespace WularItech_solutions.Controllers
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Login(string phone, string password)
-        {
-            var tech = await _db.Technicians
-                .FirstOrDefaultAsync(t => t.Phone == phone && t.IsActive == true);
-
-            if (tech == null || !BCrypt.Net.BCrypt.Verify(password, tech.PasswordHash))
-            {
-                ViewBag.Error = "Invalid phone or password.";
-                return View();
-            }
-
-            var token = _tokenService.CreateTechnicianToken(tech);
-            Response.Cookies.Append("tech_jwt", token, new CookieOptions
-            {
-                HttpOnly = true,
-                Secure = true,
-                SameSite = SameSiteMode.Strict,
-                Expires = DateTimeOffset.UtcNow.AddHours(8)
-            });
-
-            return RedirectToAction("Dashboard");
-        }
-
         [HttpGet]
-        public async Task<IActionResult> Dashboard()
-        {
-            var techId = GetTechnicianId();
-            if (techId == null) return RedirectToAction("Login");
+public async Task<IActionResult> Dashboard()
+{
+    var techId = GetTechnicianId();
+    if (techId == null) return RedirectToAction("Login");
 
-            var tech = await _db.Technicians.FindAsync(techId);
-            var bookings = await _db.Bookings
-                .Where(b => b.TechnicianId == techId)
-                .OrderByDescending(b => b.CreatedAt)
-                .ToListAsync();
+    var tech = await _db.Technicians.FindAsync(techId);
+    var bookings = await _db.Bookings
+        .Where(b => b.TechnicianId == techId)
+        .OrderByDescending(b => b.CreatedAt)
+        .ToListAsync();
 
-            ViewBag.TechnicianName = tech?.FullName;
-            return View(bookings);
-        }
+    var bookingIds = bookings.Select(b => b.BookingId).ToList();
+    var myReviews = await _db.Reviews
+        .Where(r => bookingIds.Contains(r.BookingId))
+        .OrderByDescending(r => r.CreatedAt)
+        .ToListAsync();
 
+    ViewBag.TechnicianName = tech?.FullName;
+    ViewBag.Reviews = myReviews;
+    ViewBag.AverageRating = myReviews.Any() ? Math.Round(myReviews.Average(r => r.Rating), 1) : (double?)null;
+
+    return View(bookings);
+}
         [HttpPost]
         public async Task<IActionResult> UpdateStatus(Guid id, string status)
         {

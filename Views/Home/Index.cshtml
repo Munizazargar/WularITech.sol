@@ -402,7 +402,6 @@
         </div>
     </div>
 </section>
-
 <!-- ================= TESTIMONIALS ================= -->
 <section class="testimonials reveal">
     <div class="container">
@@ -415,32 +414,21 @@
            style="max-width:700px;margin:0 auto 50px;text-align:center;font-size:17px;line-height:1.8;color:#6B7280;">
             We take pride in delivering top-notch services across Kashmir
         </p>
-        <div class="stats-wrapper">
-            <div class="stat-card reveal reveal-delay-1">
-                <p style="font-style:italic; margin-bottom:20px;">
-                    "Booked a CCTV installation online and the technician arrived the next day. Flawless experience!"
-                </p>
-                <h4>Aamir Khan</h4>
-                <span class="text-orange">Homeowner, Srinagar</span>
-            </div>
-            <div class="stat-card reveal reveal-delay-2">
-                <p style="font-style:italic; margin-bottom:20px;">
-                    "Excellent electrical wiring service with transparent pricing. Highly recommended."
-                </p>
-                <h4>Fatima Wani</h4>
-                <span class="text-orange">Business Owner, Baramulla</span>
-            </div>
-            <div class="stat-card reveal reveal-delay-3">
-                <p style="font-style:italic; margin-bottom:20px;">
-                    "The booking process was so easy. Got confirmation email instantly. Great platform!"
-                </p>
-                <h4>Rohit Singh</h4>
-                <span class="text-orange">Shop Owner, Sopore</span>
-            </div>
-        </div>
-    </div>
-</section>
 
+        @if (ViewBag.TopTechnicians != null && ((IEnumerable<dynamic>)ViewBag.TopTechnicians).Any())
+        {
+            <div class="reveal reveal-delay-1" style="text-align:center; margin:-20px auto 40px; max-width:700px;">
+                <span style="background:#FEF3C7; color:#92400E; padding:8px 18px; border-radius:50px; font-size:14px; font-weight:600; display:inline-block;">
+                    🏆 Top Rated: @string.Join(" · ", ((IEnumerable<dynamic>)ViewBag.TopTechnicians).Select(t => $"{t.FullName} (⭐{t.AverageRating})"))
+                </span>
+            </div>
+        }
+
+        <div class="stats-wrapper">
+
+
+
+            
 <!-- ================= OUR WORK ================= -->
 <section class="our-work reveal" style="padding:80px 24px; background:#ffffff; text-align:center;">
     <div class="container">

@@ -286,14 +286,28 @@
 
                                     @if (booking.Status == "Completed")
                                     {
-                                        <div style="margin-top: 16px; text-align: right;">
-                                            <a href="/Review/Create?bookingId=@booking.BookingId" class="btn-admin-primary"
-                                               style="display: inline-block; text-decoration: none;">
-                                                ⭐ Leave a Review
-                                            </a>
-                                        </div>
-                                    }
+                                        var existingReview = ViewBag.ReviewedBookingIds != null &&
+                                                    ((HashSet<Guid>)ViewBag.ReviewedBookingIds).Contains(booking.BookingId);
 
+                                        @if (existingReview)
+                                        {
+                                            <div style="margin-top: 16px; padding: 14px 18px; background: var(--bg-gray); border-radius: 10px;">
+                                                <p style="margin: 0 0 6px; color: var(--text-light); font-size: 12px;">YOUR REVIEW</p>
+                                                <p style="margin: 0; color: var(--text-dark);">Thanks for reviewing this job!</p>
+                                                <a href="/Review/Edit?bookingId=@booking.BookingId"
+                                                   style="color: var(--primary-orange); font-size: 13px; font-weight: 600;">Edit your review</a>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div style="margin-top: 16px; text-align: right;">
+                                                <a href="/Review/Create?bookingId=@booking.BookingId" class="btn-admin-primary"
+                                                   style="display: inline-block; text-decoration: none;">
+                                                    ⭐ Leave a Review
+                                                </a>
+                                            </div>
+                                        }
+                                    }
                                 </div>
                             }
 

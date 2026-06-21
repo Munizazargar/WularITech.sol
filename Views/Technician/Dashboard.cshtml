@@ -22,7 +22,16 @@
     .btn-inprogress { background: #dbeafe; color: #1e40af; }
     .btn-complete { background: #d1fae5; color: #065f46; }
     .empty { text-align: center; padding: 60px 20px; color: #9ca3af; }
-    
+
+    .reviews-summary { background: #fff; border-radius: 12px; padding: 20px 24px; margin-bottom: 28px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+    .reviews-summary-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .rating-big { font-size: 28px; font-weight: 700; color: #111827; }
+    .review-item { border-top: 1px solid #f3f4f6; padding: 14px 0; }
+    .review-item:first-child { border-top: none; }
+    .review-stars { color: #E07B39; font-size: 14px; }
+    .review-comment { color: #374151; font-size: 14px; margin-top: 4px; }
+    .review-meta { color: #9ca3af; font-size: 12px; margin-top: 4px; }
+    .toggle-reviews { background: none; border: none; color: #E07B39; font-weight: 600; font-size: 13px; cursor: pointer; padding: 0; margin-top: 12px; }
 </style>
 
 <div style="padding: 32px; max-width: 1100px; margin: 0 auto;">
@@ -35,6 +44,44 @@
             @TempData["Success"]
         </div>
     }
+
+    @{
+        var myReviews = (List<WularItech_solutions.Models.Review>)(ViewBag.Reviews ?? new List<WularItech_solutions.Models.Review>());
+        double? avgRating = ViewBag.AverageRating;
+    }
+
+    <div class="reviews-summary">
+        <div class="reviews-summary-top">
+            <div>
+                <div style="color:#6b7280; font-size:13px; font-weight:600;">YOUR RATING</div>
+                @if (avgRating.HasValue)
+                {
+                    <div class="rating-big">⭐ @avgRating.Value <span style="font-size:14px; color:#6b7280; font-weight:500;">(@myReviews.Count review@(myReviews.Count == 1 ? "" : "s"))</span></div>
+                }
+                else
+                {
+                    <div style="color:#9ca3af; margin-top:6px;">No reviews yet</div>
+                }
+            </div>
+        </div>
+
+        @if (myReviews.Any())
+        {
+            <div id="reviewsList" style="display:none; margin-top: 16px;">
+                @foreach (var r in myReviews)
+                {
+                    <div class="review-item">
+                        <div class="review-stars">@string.Concat(Enumerable.Repeat("⭐", r.Rating))</div>
+                        <div class="review-comment">@r.Comment</div>
+                        <div class="review-meta">@r.CustomerName &middot; @r.ServiceType &middot; @r.CreatedAt.ToString("dd MMM yyyy")</div>
+                    </div>
+                }
+            </div>
+            <button type="button" class="toggle-reviews" onclick="document.getElementById('reviewsList').style.display = document.getElementById('reviewsList').style.display === 'none' ? 'block' : 'none';">
+                View all reviews
+            </button>
+        }
+    </div>
 
     @if (!Model.Any())
     {

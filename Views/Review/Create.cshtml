@@ -1,17 +1,18 @@
 @model WularItech_solutions.ViewModels.CreateReviewViewModel
 @{
     ViewData["Title"] = "Leave a Review";
+    var isEdit = ViewContext.RouteData.Values["action"]?.ToString() == "Edit";
 }
 
 <section class="auth-section">
     <div class="auth-container">
         <div class="auth-card">
             <div class="auth-header">
-                <h1 class="auth-title">Rate Your Experience</h1>
+                <h1 class="auth-title">@(isEdit ? "Edit Your Review" : "Rate Your Experience")</h1>
                 <p class="auth-subtitle">Service: @ViewBag.ServiceType</p>
             </div>
 
-            <form method="post" asp-action="Create" class="auth-form">
+            <form method="post" asp-action="@(isEdit ? "Edit" : "Create")" class="auth-form">
                 @if (ViewBag.errorMessage != null)
                 {
                     <div class="auth-error-message">@ViewBag.errorMessage</div>
@@ -23,21 +24,21 @@
                     <label for="rating">Rating</label>
                     <select id="rating" name="Rating" required>
                         <option value="">Select a rating</option>
-                        <option value="5">5 - Excellent</option>
-                        <option value="4">4 - Good</option>
-                        <option value="3">3 - Average</option>
-                        <option value="2">2 - Poor</option>
-                        <option value="1">1 - Very Poor</option>
+                        <option value="5" selected="@(Model.Rating == 5)">5 - Excellent</option>
+                        <option value="4" selected="@(Model.Rating == 4)">4 - Good</option>
+                        <option value="3" selected="@(Model.Rating == 3)">3 - Average</option>
+                        <option value="2" selected="@(Model.Rating == 2)">2 - Poor</option>
+                        <option value="1" selected="@(Model.Rating == 1)">1 - Very Poor</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="comment">Your Review</label>
-                    <textarea id="comment" name="Comment" rows="4" placeholder="Tell us about your experience..." required></textarea>
+                    <textarea id="comment" name="Comment" rows="4" placeholder="Tell us about your experience...">@Model.Comment</textarea>
                 </div>
 
                 <button type="submit" class="btn-auth-primary">
-                    Submit Review
+                    @(isEdit ? "Update Review" : "Submit Review")
                 </button>
             </form>
         </div>

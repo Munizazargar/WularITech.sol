@@ -133,5 +133,63 @@ namespace WularItech_solutions.Controllers
 
             return View(reviews);
         }
+
+        [HttpGet]
+public async Task<ActionResult> Edit(Guid bookingId)
+{
+    var user = await GetCurrentUserAsync();
+    if (user == null)
+    {
+        return RedirectToAction("Login", "Account");
+    }
+
+    var review = await dbContext.Reviews.FirstOrDefaultAsync(r => r.BookingId == bookingId && r.UserId == user.Id);
+
+    if (review == null)
+    {
+        ViewBag.errorMessage = "Review not found.";
+        return View("ReviewError");
+    }
+
+    var model = new CreateReviewViewModel
+    {
+        BookingId = review.BookingId,
+        Rating = review.Rating,
+        Comment = review.Comment
+    };
+
+    ViewBag.ServiceType = review.ServiceType;
+    return View("Create", model);
+}
+
+[HttpPost]
+public async Task<ActionResult> Edit(CreateReviewViewModel model)
+{
+    var user = await GetCurrentUserAsync();
+    if (user == null)
+    {
+        return RedirectToAction("Login", "Account");
+    }
+
+    if (!ModelState.IsValid)
+    {
+        return View("Create", model);
+    }
+
+    var review = await dbContext.Reviews.FirstOrDefaultAsync(r => r.BookingId == model.BookingId && r.UserId == user.Id);
+
+    if (review == null)
+    {
+        ViewBag.errorMessage = "Review not found.";
+        return View("ReviewError");
+    }
+
+    review.Rating = model.Rating;
+    review.Comment = model.Comment;
+    await dbContext.SaveChangesAsync();
+
+    ViewBag.message = "Your review has been updated.";
+    return View("ReviewThankYou");
+}
     }
 }
