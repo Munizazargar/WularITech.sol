@@ -17,37 +17,45 @@ public class HomeController : Controller
     }
 
     public async Task<IActionResult> Index()
-    {
-        // Top rated technician(s): average rating across their completed jobs,
-        // only counted if they have at least 3 reviews (avoids one lucky 5-star
-        // review crowning someone "top rated" off a single job).
-        var topTechnicians = await _db.Technicians
-            .Where(t => t.IsActive)
-            .Select(t => new
-            {
-                Technician = t,
-                ReviewCount = _db.Reviews
-                    .Count(r => _db.Bookings.Any(b => b.BookingId == r.BookingId && b.TechnicianId == t.TechnicianId)),
-                AverageRating = _db.Reviews
-                    .Where(r => _db.Bookings.Any(b => b.BookingId == r.BookingId && b.TechnicianId == t.TechnicianId))
-                    .Average(r => (double?)r.Rating)
-            })
-            .Where(x => x.ReviewCount >= 3)
-            .OrderByDescending(x => x.AverageRating)
-            .Take(3)
-            .ToListAsync();
-
-        ViewBag.TopTechnicians = topTechnicians.Select(x => new
+{
+    var topTechnicians = await _db.Technicians
+        .Where(t => t.IsActive)
+        .Select(t => new
         {
-            x.Technician.FullName,
-            x.Technician.Skill,
-            x.Technician.Area,
-            AverageRating = Math.Round(x.AverageRating ?? 0, 1),
-            x.ReviewCount
-        }).ToList();
+            Technician = t,
+            ReviewCount = _db.Reviews
+                .Count(r => _db.Bookings.Any(b => b.BookingId == r.BookingId && b.TechnicianId == t.TechnicianId)),
+            AverageRating = _db.Reviews
+                .Where(r => _db.Bookings.Any(b => b.BookingId == r.BookingId && b.TechnicianId == t.TechnicianId))
+                .Average(r => (double?)r.Rating)
+        })
+        .Where(x => x.ReviewCount >= 3)
+        .OrderByDescending(x => x.AverageRating)
+        .Take(3)
+        .ToListAsync();
 
-        return View();
-    }
+    ViewBag.TopTechnicians = topTechnicians.Select(x => new
+    {
+        x.Technician.FullName,
+        x.Technician.Skill,
+        x.Technician.Area,
+        AverageRating = Math.Round(x.AverageRating ?? 0, 1),
+        x.ReviewCount
+    }).ToList();
+
+    // Featured testimonials: highest-rated reviews with a meaningful comment,
+    // most recent first as a tiebreaker.
+    var featuredReviews = await _db.Reviews
+        .Where(r => r.Rating >= 4 && r.Comment.Length >= 15)
+        .OrderByDescending(r => r.Rating)
+        .ThenByDescending(r => r.CreatedAt)
+        .Take(3)
+        .ToListAsync();
+
+    ViewBag.FeaturedReviews = featuredReviews;
+
+    return View();
+}
 
     [HttpGet]
     public IActionResult Pricing()
