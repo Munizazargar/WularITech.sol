@@ -150,12 +150,11 @@ img {
 }
 
 .brand-tagline {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    color: var(--text-gray);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #555;
 }
-
 /* Navbar Right Section */
 .navbar-right {
     display: flex;
