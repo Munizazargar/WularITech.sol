@@ -151,9 +151,10 @@ img {
 
 .brand-tagline {
     font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    color: #555;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: #ffd166;
+    text-transform: uppercase;
 }
 /* Navbar Right Section */
 .navbar-right {
